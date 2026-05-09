@@ -1,6 +1,6 @@
 import { siteConfig } from "@/data/siteConfig";
 import { towns } from "@/data/towns";
-import type { Service } from "@/data/services";
+import type { Service, SubService } from "@/data/services";
 import type { Town } from "@/data/towns";
 import type { Review } from "@/data/reviews";
 
@@ -167,6 +167,27 @@ export function buildReviewsSchema(reviews: Review[]) {
       },
       reviewBody: r.body,
     })),
+  };
+}
+
+export function buildSubServiceSchema(sub: SubService) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: sub.name,
+    serviceType: sub.name,
+    provider: {
+      "@type": "LocalBusiness",
+      name: siteConfig.name,
+      telephone: siteConfig.phone.raw,
+      url: siteConfig.url,
+    },
+    description: sub.longDescription,
+    areaServed: towns.map((t) => ({
+      "@type": "Place",
+      name: `${t.name}, NJ`,
+    })),
+    url: `${siteConfig.url}/services/${sub.parentSlug}/${sub.slug}`,
   };
 }
 

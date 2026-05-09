@@ -8,6 +8,7 @@ import { siteConfig } from "@/data/siteConfig";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { CTABanner } from "@/components/ui/CTABanner";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { QuoteSidebar } from "@/components/QuoteSidebar";
 import {
   buildServiceSchema,
   buildFaqSchema,
@@ -78,7 +79,7 @@ export default async function TownServicePage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      {/* Hero */}
+      {/* Hero — full width */}
       <section className="bg-[var(--ink)] py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumbs
@@ -112,64 +113,79 @@ export default async function TownServicePage({
         </div>
       </section>
 
-      {/* Intro copy */}
-      <section className="bg-[var(--paper)] py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-[var(--ink)] text-lg leading-relaxed mb-6">{opening}</p>
-          <p className="text-[var(--muted)] leading-relaxed">{secondPara}</p>
+      {/* Two-column body: content left, sticky sidebar right */}
+      <div className="flex flex-col lg:grid lg:grid-cols-[1fr_360px] lg:items-start">
 
-          {/* ZIP codes inline */}
-          {town.zipCodes.length > 0 && (
-            <p className="mt-6 text-sm text-[var(--muted)]">
-              Serving {town.name} ZIP code{town.zipCodes.length > 1 ? "s" : ""}:{" "}
-              <span className="font-semibold text-[var(--ink)]">
-                {town.zipCodes.join(", ")}
-              </span>
-              {town.neighborhoods.length > 0 && (
-                <>, including {town.neighborhoods.slice(0, 3).join(", ")}</>
+        {/* Sidebar: first on mobile, right column on desktop */}
+        <div className="order-1 lg:order-2">
+          <div className="lg:sticky lg:top-36 px-4 sm:px-6 lg:px-8 py-8 lg:pt-16 lg:pb-8">
+            <QuoteSidebar prefillService={serviceSlug} />
+          </div>
+        </div>
+
+        {/* Article content: second on mobile, left column on desktop */}
+        <div className="order-2 lg:order-1 min-w-0">
+
+          {/* Intro copy */}
+          <section className="bg-[var(--paper)] py-16">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+              <p className="text-[var(--ink)] text-lg leading-relaxed mb-6">{opening}</p>
+              <p className="text-[var(--muted)] leading-relaxed">{secondPara}</p>
+
+              {town.zipCodes.length > 0 && (
+                <p className="mt-6 text-sm text-[var(--muted)]">
+                  Serving {town.name} ZIP code{town.zipCodes.length > 1 ? "s" : ""}:{" "}
+                  <span className="font-semibold text-[var(--ink)]">
+                    {town.zipCodes.join(", ")}
+                  </span>
+                  {town.neighborhoods.length > 0 && (
+                    <>, including {town.neighborhoods.slice(0, 3).join(", ")}</>
+                  )}
+                  .
+                </p>
               )}
-              .
-            </p>
-          )}
-        </div>
-      </section>
+            </div>
+          </section>
 
-      {/* What's included */}
-      <section className="bg-[var(--paper-2)] border-y border-[var(--line)] py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-display font-bold text-[var(--ink)] text-2xl mb-8">
-            What Our {service.shortName} in {town.name} Includes
-          </h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {service.whatIncluded.map((item, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <ChevronRight size={16} className="text-[var(--brand-red)] mt-0.5 flex-shrink-0" />
-                <span className="text-sm text-[var(--ink)] leading-relaxed">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+          {/* What's included */}
+          <section className="bg-[var(--paper-2)] border-y border-[var(--line)] py-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="font-display font-bold text-[var(--ink)] text-2xl mb-8">
+                What Our {service.shortName} in {town.name} Includes
+              </h2>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {service.whatIncluded.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <ChevronRight size={16} className="text-[var(--brand-red)] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-[var(--ink)] leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
 
-      {/* Process */}
-      <section className="bg-[var(--paper)] py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-display font-bold text-[var(--ink)] text-2xl mb-8">Our Process</h2>
-          <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {service.processSteps.map((step) => (
-              <li key={step.step} className="border border-[var(--line)] p-5">
-                <div className="text-[var(--brand-red)] font-black text-2xl font-display mb-3">
-                  0{step.step}
-                </div>
-                <h3 className="font-semibold text-[var(--ink)] mb-2">{step.title}</h3>
-                <p className="text-sm text-[var(--muted)] leading-relaxed">{step.description}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+          {/* Process */}
+          <section className="bg-[var(--paper)] py-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="font-display font-bold text-[var(--ink)] text-2xl mb-8">Our Process</h2>
+              <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {service.processSteps.map((step) => (
+                  <li key={step.step} className="border border-[var(--line)] p-5">
+                    <div className="text-[var(--brand-red)] font-black text-2xl font-display mb-3">
+                      0{step.step}
+                    </div>
+                    <h3 className="font-semibold text-[var(--ink)] mb-2">{step.title}</h3>
+                    <p className="text-sm text-[var(--muted)] leading-relaxed">{step.description}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
 
-      {/* Why choose us */}
+        </div>
+      </div>
+
+      {/* Full-width sections below */}
       <section className="bg-[var(--ink)] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-display font-bold text-white text-2xl mb-8">
@@ -188,7 +204,6 @@ export default async function TownServicePage({
 
       <CTABanner service={service.shortName} />
 
-      {/* Mini FAQ */}
       <section className="bg-[var(--paper)] py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-display font-bold text-[var(--ink)] text-2xl mb-8">
@@ -198,7 +213,6 @@ export default async function TownServicePage({
         </div>
       </section>
 
-      {/* Other services in this town */}
       <section className="bg-[var(--paper-2)] border-t border-[var(--line)] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-bold text-[var(--ink)] text-lg mb-6">
@@ -218,7 +232,6 @@ export default async function TownServicePage({
         </div>
       </section>
 
-      {/* Nearby towns for this service */}
       {neighborTowns.length > 0 && (
         <section className="bg-[var(--paper)] py-16 border-t border-[var(--line)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -7,6 +7,7 @@ import { StickyTopBar } from "@/components/layout/StickyTopBar";
 import { StickyMobileBar } from "@/components/layout/StickyMobileBar";
 import { buildLocalBusinessSchema } from "@/lib/schema";
 import { siteConfig } from "@/data/siteConfig";
+import { ChatBubbleWidget } from "@/components/ChatBubbleWidget";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <Footer />
         <StickyMobileBar />
+        <ChatBubbleWidget />
       </body>
     </html>
   );

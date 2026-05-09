@@ -11,6 +11,13 @@ These are blocking or near-blocking items that require client-supplied content:
   - `/public/images/services/demolition/hero.jpg`
   - `/public/images/services/asbestos-removal/hero.jpg`
   - `/public/images/services/mold-remediation/hero.jpg`
+- [ ] Sub-service hero photos — currently all using demolition hero as placeholder. Replace each with a real job-site photo specific to that service:
+  - `/public/images/services/demolition/garage-demolition-hero.jpg`
+  - `/public/images/services/demolition/kitchen-demolition-hero.jpg`
+  - `/public/images/services/demolition/bathroom-demolition-hero.jpg`
+  - `/public/images/services/demolition/house-teardown-hero.jpg`
+  - `/public/images/services/demolition/concrete-cutting-hero.jpg`
+  - Update `heroImage` path in each entry of `subServices` array in `src/data/services.ts` once photos are available.
 - [ ] Gallery photos: minimum 12–20 real before/after job photos
   - Place in: `/public/images/gallery/`
   - Naming: `demolition-kearny-001.jpg`, `asbestos-north-arlington-001.jpg`, etc.
@@ -25,6 +32,7 @@ These are blocking or near-blocking items that require client-supplied content:
 
 ### Content
 - [ ] Owner name and bio for About page (`src/app/about/page.tsx` — marked `{{TODO}}`)
+- [ ] Chat bubble avatar photo — place at `/client-assets/avatar.jpg`, then update `src/components/ChatBubbleWidget.tsx` header `div` to use `next/image`. Currently shows "TC" monogram.
 - [ ] Google Business Profile URL → `src/data/siteConfig.ts` → `social.google`
 - [ ] Facebook URL (if applicable) → `src/data/siteConfig.ts` → `social.facebook`
 
