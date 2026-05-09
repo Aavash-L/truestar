@@ -348,7 +348,7 @@ export default function HomePage() {
               href="/estimate"
               className="text-[var(--muted)] hover:text-white transition-colors text-sm underline underline-offset-4"
             >
-              Or send us a message →
+              Or schedule a site visit →
             </Link>
           </div>
         </div>
