@@ -3,7 +3,6 @@ import { Inter, Archivo } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { StickyTopBar } from "@/components/layout/StickyTopBar";
 import { StickyMobileBar } from "@/components/layout/StickyMobileBar";
 import { buildLocalBusinessSchema } from "@/lib/schema";
 import { siteConfig } from "@/data/siteConfig";
@@ -57,7 +56,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main-content" className="skip-to-content">
           Skip to main content
         </a>
-        <StickyTopBar />
         <Header />
         <main id="main-content" className="lg:mt-0">
           {children}

@@ -118,7 +118,7 @@ export default async function TownServicePage({
 
         {/* Sidebar: first on mobile, right column on desktop */}
         <div className="order-1 lg:order-2">
-          <div className="lg:sticky lg:top-36 px-4 sm:px-6 lg:px-8 py-8 lg:pt-16 lg:pb-8">
+          <div className="lg:sticky lg:top-24 px-4 sm:px-6 lg:px-8 py-8 lg:pt-16 lg:pb-8">
             <QuoteSidebar prefillService={serviceSlug} />
           </div>
         </div>
