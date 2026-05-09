@@ -75,8 +75,10 @@ export default function HomePage() {
             className="font-display font-extrabold text-white mb-8 leading-[1.05] text-balance"
             style={{ fontSize: "clamp(2.75rem, 6.5vw, 5.5rem)" }}
           >
-            Licensed Demolition &amp;<br className="hidden sm:block" />
-            Asbestos Removal<br className="hidden sm:block" />
+            Licensed Demolition &amp;{" "}
+            <br className="hidden sm:block" />
+            Asbestos Removal{" "}
+            <br className="hidden sm:block" />
             Done Right.
           </h1>
 
