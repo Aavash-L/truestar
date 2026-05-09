@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Brand colors */
+  --color-brand-red: #DC2626;
+  --color-ink: #0A0A0A;
+  --color-ink-2: #171717;
+  --color-paper: #FAFAFA;
+  --color-paper-2: #F4F4F5;
+  --color-line: #E4E4E7;
+  --color-muted: #71717A;
+
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-archivo);
+}
+
+:root {
+  --brand-red: #DC2626;
+  --ink: #0A0A0A;
+  --ink-2: #171717;
+  --paper: #FAFAFA;
+  --paper-2: #F4F4F5;
+  --line: #E4E4E7;
+  --muted: #71717A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible ring — red */
+:focus-visible {
+  outline: 2px solid #DC2626;
+  outline-offset: 2px;
+}
+
+/* Skip to content */
+.skip-to-content {
+  position: absolute;
+  top: -9999px;
+  left: 0;
+  z-index: 9999;
+  background: #DC2626;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Vignette overlay for hero images */
+.hero-vignette {
+  background: linear-gradient(
+    to bottom,
+    rgba(10,10,10,0.15) 0%,
+    rgba(10,10,10,0.55) 60%,
+    rgba(10,10,10,0.75) 100%
+  );
+}
+
+/* Before/after slider */
+.ba-slider {
+  position: relative;
+  overflow: hidden;
+  cursor: col-resize;
+  user-select: none;
+}
+.ba-slider__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #DC2626;
+  cursor: col-resize;
+  transform: translateX(-50%);
+}
+.ba-slider__handle::before,
+.ba-slider__handle::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #DC2626;
+  top: 50%;
+  margin-top: -20px;
+}
+.ba-slider__handle::before {
+  content: '◀ ▶';
+  color: white;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: -2px;
+}
+.ba-slider__after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Accordion animation */
+.accordion-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
