@@ -82,6 +82,14 @@ export function Header() {
               </Link>
             ))}
 
+            <a
+              href={siteConfig.phone.href}
+              className="flex items-center gap-1.5 text-sm font-bold text-[var(--ink)] hover:text-[var(--brand-red)] transition-colors"
+            >
+              <Phone size={15} />
+              {siteConfig.phone.display}
+            </a>
+
             <Link
               href="/estimate"
               className="bg-[var(--brand-red)] text-white px-5 py-2.5 text-sm font-bold hover:bg-red-700 transition-colors"

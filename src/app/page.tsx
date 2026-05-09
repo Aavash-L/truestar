@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Shield, Star, CheckCircle, ChevronRight, Hammer, Wind, Droplets } from "lucide-react";
+import { Phone, Shield, Star, CheckCircle, ChevronRight, ChevronDown, Hammer, Wind, Droplets } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import { services } from "@/data/services";
 import { towns } from "@/data/towns";
@@ -113,6 +113,13 @@ export default function HomePage() {
             <span>Permits handled</span>
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <ChevronDown
+          size={32}
+          className="hero-scroll-bounce absolute bottom-6 left-1/2 text-white/50 pointer-events-none"
+          aria-hidden="true"
+        />
       </section>
 
       {/* ── TRUST STRIP ──────────────────────────────────────────────────── */}
@@ -169,7 +176,7 @@ export default function HomePage() {
                 <Link
                   key={service.slug}
                   href={`/services/${service.slug}`}
-                  className="group border border-[var(--line)] bg-white flex flex-col hover:border-[var(--ink)] transition-colors"
+                  className="group border border-[var(--line)] bg-white flex flex-col hover:border-[var(--ink)] hover:-translate-y-1 transition-all duration-200 shadow-sm hover:shadow-md"
                 >
                   {/* Card image area — styled placeholder until real photos arrive */}
                   <div className={`aspect-video bg-gradient-to-br ${visual?.accent ?? "from-[var(--ink-2)] to-[var(--ink)]"} relative overflow-hidden flex items-center justify-center`}>

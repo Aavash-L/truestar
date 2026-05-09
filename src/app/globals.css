@@ -135,6 +135,18 @@ body {
   transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
+/* Hero scroll indicator bounce */
+@keyframes hero-scroll-bounce {
+  0%, 100% { transform: translateY(0) translateX(-50%); opacity: 0.45; }
+  50%       { transform: translateY(7px) translateX(-50%); opacity: 0.75; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-scroll-bounce {
+    animation: hero-scroll-bounce 2s ease-in-out infinite;
+  }
+}
+
 /* Chat bubble pulse — single play on first load */
 @keyframes chat-bubble-pulse {
   0%   { transform: scale(1);    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.45); }

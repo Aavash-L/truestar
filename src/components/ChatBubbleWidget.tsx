@@ -34,19 +34,8 @@ function ChatPanel({ onClose, onSuccess }: { onClose: () => void; onSuccess: () 
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
-  const panelRef = useRef<HTMLDivElement>(null);
 
-  // Lock body scroll on mobile when panel is open
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, []);
-
-  const handlePhoneBlur = () => {
-    setPhone(formatPhone(phone));
-  };
+  const handlePhoneBlur = () => setPhone(formatPhone(phone));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,22 +58,13 @@ function ChatPanel({ onClose, onSuccess }: { onClose: () => void; onSuccess: () 
       const res = await fetch("/api/chat-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          phone,
-          message,
-          consent,
-          pageUrl: window.location.href,
-        }),
+        body: JSON.stringify({ name, phone, message, consent, pageUrl: window.location.href }),
       });
       const data = await res.json();
       if (!data.ok) throw new Error(data.error ?? "Failed");
       setSuccess(true);
       sessionStorage.setItem(STORAGE_KEY, "submitted");
-      setTimeout(() => {
-        onSuccess();
-        onClose();
-      }, 5000);
+      setTimeout(() => { onSuccess(); onClose(); }, 5000);
     } catch {
       setSubmitError("Something went wrong. Please call us directly.");
     } finally {
@@ -97,138 +77,70 @@ function ChatPanel({ onClose, onSuccess }: { onClose: () => void; onSuccess: () 
 
   return (
     <div
-      ref={panelRef}
-      className="flex flex-col rounded-lg overflow-hidden border border-[var(--line)] bg-white shadow-2xl"
-      style={{ maxHeight: "min(600px, calc(100vh - 120px))" }}
+      className="flex flex-col rounded-xl overflow-hidden border border-[var(--line)] bg-white shadow-2xl"
+      style={{ maxHeight: "min(580px, calc(100dvh - 140px))" }}
       role="dialog"
       aria-modal="true"
       aria-label="Chat with True Star Contracting"
     >
       {/* Header */}
-      <div
-        className="flex items-center gap-3 px-4 py-3 flex-shrink-0"
-        style={{ background: "var(--brand-red)" }}
-      >
+      <div className="flex items-center gap-3 px-4 py-3 flex-shrink-0" style={{ background: "var(--brand-red)" }}>
         <div className="w-8 h-8 rounded-full bg-white/25 flex items-center justify-center flex-shrink-0">
           <span className="text-white font-black text-[11px]">TC</span>
         </div>
-        <span className="flex-1 text-white font-semibold text-base leading-tight">
-          Have a question?
-        </span>
-        <button
-          onClick={onClose}
-          className="text-white/80 hover:text-white transition-colors p-1 -mr-1"
-          aria-label="Close chat"
-        >
+        <span className="flex-1 text-white font-semibold text-base leading-tight">Have a question?</span>
+        <button onClick={onClose} className="text-white/80 hover:text-white transition-colors p-1 -mr-1" aria-label="Close chat">
           <X size={20} />
         </button>
       </div>
 
       {/* Scrollable body */}
       <div className="flex-1 overflow-y-auto p-5 space-y-4">
-        {/* Greeting bubble */}
         <div className="bg-[var(--paper-2)] rounded-lg px-4 py-3 text-sm text-[var(--ink)] leading-relaxed max-w-[90%]">
-          Hi! Drop your name, phone, and what you need help with. We&apos;ll
-          text or call you within 1 business hour.
+          Hi! Drop your name, phone, and what you need help with. We&apos;ll text or call you within 1 business hour.
         </div>
 
         {success ? (
           <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-4 text-sm text-green-800 leading-relaxed">
-            <strong>Thanks!</strong> Mateo will text or call you within 1
-            business hour.
+            <strong>Thanks!</strong> Mateo will text or call you within 1 business hour.
           </div>
         ) : (
           <form onSubmit={handleSubmit} noValidate className="space-y-3">
-            {/* Name */}
             <div>
-              <input
-                type="text"
-                placeholder="Name *"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                autoComplete="name"
-                className={inputClass}
-              />
-              {fieldErrors.name && (
-                <p className="text-[var(--brand-red)] text-xs mt-1">
-                  {fieldErrors.name}
-                </p>
-              )}
+              <input type="text" placeholder="Name *" value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" className={inputClass} />
+              {fieldErrors.name && <p className="text-[var(--brand-red)] text-xs mt-1">{fieldErrors.name}</p>}
             </div>
 
-            {/* Phone with +1 prefix */}
             <div>
               <div className="flex">
-                <span className="flex items-center px-3 border border-r-0 border-[var(--line)] bg-[var(--paper-2)] text-sm text-[var(--muted)] select-none flex-shrink-0">
-                  +1
-                </span>
-                <input
-                  type="tel"
-                  placeholder="Phone *"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  onBlur={handlePhoneBlur}
-                  autoComplete="tel"
-                  className={inputClass}
-                />
+                <span className="flex items-center px-3 border border-r-0 border-[var(--line)] bg-[var(--paper-2)] text-sm text-[var(--muted)] select-none flex-shrink-0">+1</span>
+                <input type="tel" placeholder="Phone *" value={phone} onChange={(e) => setPhone(e.target.value)} onBlur={handlePhoneBlur} autoComplete="tel" className={inputClass} />
               </div>
-              {fieldErrors.phone && (
-                <p className="text-[var(--brand-red)] text-xs mt-1">
-                  {fieldErrors.phone}
-                </p>
-              )}
+              {fieldErrors.phone && <p className="text-[var(--brand-red)] text-xs mt-1">{fieldErrors.phone}</p>}
             </div>
 
-            {/* Message */}
             <div>
-              <textarea
-                rows={3}
-                placeholder="I want to know more"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className={`${inputClass} resize-none`}
-              />
-              {fieldErrors.message && (
-                <p className="text-[var(--brand-red)] text-xs mt-1">
-                  {fieldErrors.message}
-                </p>
-              )}
+              <textarea rows={3} placeholder="I want to know more" value={message} onChange={(e) => setMessage(e.target.value)} className={`${inputClass} resize-none`} />
+              {fieldErrors.message && <p className="text-[var(--brand-red)] text-xs mt-1">{fieldErrors.message}</p>}
             </div>
 
-            {/* Consent */}
             <label className="flex items-start gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={consent}
-                onChange={(e) => setConsent(e.target.checked)}
-                className="mt-0.5 flex-shrink-0 accent-[#DC2626]"
-              />
+              <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 flex-shrink-0 accent-[#DC2626]" />
               <span className="text-[11px] text-[var(--muted)] leading-relaxed">
-                By submitting you agree to receive SMS or e-mails from True
-                Star Contracting at the number provided. Message and data rates
-                may apply.
+                By submitting you agree to receive SMS or e-mails from True Star Contracting at the number provided. Message and data rates may apply.
               </span>
             </label>
 
-            {submitError && (
-              <p className="text-[var(--brand-red)] text-xs">{submitError}</p>
-            )}
+            {submitError && <p className="text-[var(--brand-red)] text-xs">{submitError}</p>}
 
-            <button
-              type="submit"
-              disabled={submitting}
-              className="w-full flex items-center justify-center gap-2 bg-[var(--brand-red)] text-white py-3 text-sm font-bold hover:bg-red-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-            >
+            <button type="submit" disabled={submitting} className="w-full flex items-center justify-center gap-2 bg-[var(--brand-red)] text-white py-3 text-sm font-bold hover:bg-red-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed rounded-sm">
               {submitting ? "Sending…" : "Send"}
               {!submitting && <ArrowRight size={15} />}
             </button>
 
             <p className="text-center text-sm text-[var(--muted)]">
               Or call{" "}
-              <a
-                href={siteConfig.phone.href}
-                className="text-[var(--ink)] font-semibold hover:text-[var(--brand-red)] transition-colors"
-              >
+              <a href={siteConfig.phone.href} className="text-[var(--ink)] font-semibold hover:text-[var(--brand-red)] transition-colors">
                 {siteConfig.phone.display}
               </a>
             </p>
@@ -236,11 +148,8 @@ function ChatPanel({ onClose, onSuccess }: { onClose: () => void; onSuccess: () 
         )}
       </div>
 
-      {/* Footer */}
       <div className="flex-shrink-0 px-4 py-2 bg-[var(--paper-2)] border-t border-[var(--line)]">
-        <p className="text-[11px] text-[var(--muted)] text-center">
-          Powered by True Star Contracting
-        </p>
+        <p className="text-[11px] text-[var(--muted)] text-center">Powered by True Star Contracting</p>
       </div>
     </div>
   );
@@ -249,46 +158,52 @@ function ChatPanel({ onClose, onSuccess }: { onClose: () => void; onSuccess: () 
 export function ChatBubbleWidget() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
-  const [sessionState, setSessionState] = useState<
-    "submitted" | "dismissed" | "fresh"
-  >("fresh");
+  const [sessionState, setSessionState] = useState<"submitted" | "dismissed" | "fresh">("fresh");
   const [panelOpen, setPanelOpen] = useState(false);
   const [panelEverOpened, setPanelEverOpened] = useState(false);
   const [pulse, setPulse] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Excluded routes
-  const excluded =
-    pathname === "/estimate" || pathname.startsWith("/admin");
+  const excluded = pathname === "/estimate" || pathname.startsWith("/admin");
 
   useEffect(() => {
-    const stored = sessionStorage.getItem(STORAGE_KEY) as
-      | "submitted"
-      | "dismissed"
-      | null;
+    const stored = sessionStorage.getItem(STORAGE_KEY) as "submitted" | "dismissed" | null;
     const state = stored ?? "fresh";
     setSessionState(state);
     setMounted(true);
-
     if (state === "fresh") {
-      // Slight delay so it doesn't fire immediately on paint
       const t = setTimeout(() => setPulse(true), 1200);
       return () => clearTimeout(t);
     }
   }, []);
 
-  // Stop pulse after animation completes (0.8s animation)
   useEffect(() => {
     if (!pulse) return;
     const t = setTimeout(() => setPulse(false), 1000);
     return () => clearTimeout(t);
   }, [pulse]);
 
-  const openPanel = () => {
-    setPanelOpen(true);
-    setPanelEverOpened(true);
-    setPulse(false);
-  };
+  // Close panel on click outside
+  useEffect(() => {
+    if (!panelOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        closePanel();
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [panelOpen]);
 
+  // Close panel on Escape
+  useEffect(() => {
+    if (!panelOpen) return;
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") closePanel(); };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [panelOpen]);
+
+  const openPanel = () => { setPanelOpen(true); setPanelEverOpened(true); setPulse(false); };
   const closePanel = () => {
     setPanelOpen(false);
     if (sessionState === "fresh") {
@@ -296,48 +211,52 @@ export function ChatBubbleWidget() {
       setSessionState("dismissed");
     }
   };
-
-  const handleSuccess = () => {
-    setSessionState("submitted");
-  };
+  const togglePanel = () => panelOpen ? closePanel() : openPanel();
+  const handleSuccess = () => setSessionState("submitted");
 
   if (!mounted || excluded || sessionState === "submitted") return null;
 
   return (
-    <>
-      {/* Panel — only mounted after first click */}
-      {panelEverOpened && panelOpen && (
+    <div
+      ref={containerRef}
+      className="fixed z-[55] bottom-6 right-6 max-sm:bottom-24 max-sm:right-4 flex flex-col items-end gap-3"
+    >
+      {/* Panel */}
+      {panelEverOpened && (
         <div
-          className="
-            fixed z-[60]
-            bottom-6 right-6
-            w-[380px]
-            max-sm:left-4 max-sm:right-4 max-sm:w-auto
-            max-sm:bottom-[100px]
-          "
+          className="w-[360px] max-sm:w-[calc(100vw-2rem)] transition-all duration-200 origin-bottom-right"
+          style={{
+            opacity: panelOpen ? 1 : 0,
+            transform: panelOpen ? "scale(1) translateY(0)" : "scale(0.95) translateY(8px)",
+            pointerEvents: panelOpen ? "auto" : "none",
+          }}
         >
           <ChatPanel onClose={closePanel} onSuccess={handleSuccess} />
         </div>
       )}
 
-      {/* Bubble button */}
+      {/* Bubble button — toggles X / chat icon */}
       <button
-        onClick={openPanel}
-        aria-label="Open chat"
+        onClick={togglePanel}
+        aria-label={panelOpen ? "Close chat" : "Open chat"}
+        aria-expanded={panelOpen}
         className={`
-          fixed z-[55]
-          bottom-6 right-6
-          max-sm:bottom-24 max-sm:right-4
-          w-14 h-14 rounded-full
-          flex items-center justify-center
-          text-white shadow-lg
-          hover:scale-105 active:scale-95 transition-transform
-          ${pulse ? "chat-bubble-pulse" : ""}
+          w-14 h-14 rounded-full flex items-center justify-center text-white shadow-xl
+          hover:scale-105 active:scale-95 transition-all duration-150
+          ${pulse && !panelOpen ? "chat-bubble-pulse" : ""}
         `}
         style={{ background: "var(--brand-red)" }}
       >
-        <MessageCircle size={26} fill="white" strokeWidth={0} />
+        <span
+          className="transition-transform duration-200"
+          style={{ transform: panelOpen ? "rotate(90deg)" : "rotate(0deg)" }}
+        >
+          {panelOpen
+            ? <X size={24} />
+            : <MessageCircle size={26} fill="white" strokeWidth={0} />
+          }
+        </span>
       </button>
-    </>
+    </div>
   );
 }
