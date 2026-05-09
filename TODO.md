@@ -4,6 +4,9 @@
 
 These are blocking or near-blocking items that require client-supplied content:
 
+### Video (HIGH PRIORITY)
+- [ ] Hero video — place at `/public/videos/hero.mp4`. H.264 MP4, 1920×1080, ≤20 MB, autoplay-safe (no audio needed). Drone job-site footage works best. Until this file exists the gradient fallback shows.
+
 ### Photos (HIGH PRIORITY)
 - [ ] Hero image: real job-site photo for homepage hero (full-bleed, preferably landscape orientation)
   - Place in: `/public/images/hero/hero.jpg`

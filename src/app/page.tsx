@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Shield, Clock, Star, CheckCircle, ChevronRight } from "lucide-react";
+import { Phone, Shield, Star, CheckCircle, ChevronRight, Hammer, Wind, Droplets } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import { services } from "@/data/services";
 import { towns } from "@/data/towns";
@@ -18,15 +18,22 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const countyGroups: { county: string; color: string }[] = [
-  { county: "Bergen", color: "border-blue-200" },
-  { county: "Hudson", color: "border-green-200" },
-  { county: "Essex", color: "border-yellow-200" },
-  { county: "Passaic", color: "border-purple-200" },
-  { county: "Middlesex", color: "border-orange-200" },
+const countyGroups: { county: string }[] = [
+  { county: "Bergen" },
+  { county: "Hudson" },
+  { county: "Essex" },
+  { county: "Passaic" },
+  { county: "Middlesex" },
 ];
 
 const featuredReviews = reviews.slice(0, 6);
+
+// Icon + accent color per service card
+const serviceVisuals: Record<string, { Icon: React.ElementType; accent: string }> = {
+  "demolition":       { Icon: Hammer,   accent: "from-red-950/80 to-[var(--ink)]" },
+  "asbestos-removal": { Icon: Wind,     accent: "from-slate-800 to-[var(--ink)]" },
+  "mold-remediation": { Icon: Droplets, accent: "from-emerald-950/80 to-[var(--ink)]" },
+};
 
 export default function HomePage() {
   const faqSchema = buildFaqSchema(globalFaqs);
@@ -39,58 +46,71 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[80vh] lg:min-h-[88vh] flex items-center bg-[var(--ink)] overflow-hidden">
-        {/* Background placeholder — replace with next/image hero photo */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0A0A0A] via-[#171717] to-[#1a1a1a]">
-          {/* TODO: add hero job-site photo from /public/images/hero/ once assets are available */}
-        </div>
-        {/* Vignette */}
-        <div className="absolute inset-0 hero-vignette" />
+      {/* ── HERO — video background ───────────────────────────────────────── */}
+      <section className="relative min-h-screen flex items-end pb-16 sm:pb-24 lg:pb-28 bg-[var(--ink)] overflow-hidden">
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+        {/* Video background — place /public/videos/hero.mp4 to activate */}
+        {/* TODO: provide a drone/job-site .mp4 (H.264, ≤20 MB, 1920×1080) */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/hero/hero.jpg"
+        >
+          <source src="/videos/hero.mp4" type="video/mp4" />
+        </video>
+
+        {/* Gradient overlay — light at top, heavy at bottom for legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20" />
+
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <p className="text-[var(--brand-red)] text-xs sm:text-sm font-bold uppercase tracking-widest mb-4">
-            Trusted Asbestos Removal &amp; Demolition · North Jersey
-          </p>
-          <h1
-            className="font-display font-extrabold text-white mb-6 text-balance leading-tight"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
-          >
-            Licensed Demolition &amp; Asbestos Removal Done Right.
-          </h1>
-          <p className="text-white/80 text-lg sm:text-xl max-w-2xl mb-10 leading-relaxed">
-            25+ years serving 60 towns across North Jersey. Free estimates. Fully insured. Permits handled.
+            Licensed &amp; Insured · NJ + NY · 25+ Years
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
+          <h1
+            className="font-display font-extrabold text-white mb-8 leading-[1.05] text-balance"
+            style={{ fontSize: "clamp(2.75rem, 6.5vw, 5.5rem)" }}
+          >
+            Licensed Demolition &amp;<br className="hidden sm:block" />
+            Asbestos Removal<br className="hidden sm:block" />
+            Done Right.
+          </h1>
+
+          <div className="flex flex-col sm:flex-row gap-3 mb-8">
             <a
               href={siteConfig.phone.href}
-              className="inline-flex items-center justify-center gap-2 bg-[var(--brand-red)] text-white px-8 py-4 font-bold text-lg hover:bg-red-700 transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-white text-[var(--ink)] px-7 py-4 font-bold text-base sm:text-lg hover:bg-gray-100 transition-colors rounded-full"
             >
               <Phone size={20} />
-              Call {siteConfig.phone.display}
+              {siteConfig.phone.display}
             </a>
             <Link
               href="/estimate"
-              className="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 font-bold text-lg hover:bg-white hover:text-[var(--ink)] transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-[var(--brand-red)] text-white px-7 py-4 font-bold text-base sm:text-lg hover:bg-red-700 transition-colors rounded-full"
             >
               Get a Free Estimate
             </Link>
           </div>
 
           {/* Trust row */}
-          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
+          <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-white/65">
             <span className="flex items-center gap-1.5">
-              <Star size={14} className="text-yellow-400 fill-yellow-400" />
-              5.0 on Google (42 reviews)
+              <Star size={13} className="text-yellow-400 fill-yellow-400" />
+              5.0 Google · 42 reviews
             </span>
-            <span>·</span>
+            <span className="hidden sm:block opacity-40">|</span>
             <span className="flex items-center gap-1.5">
-              <Shield size={14} className="text-green-400" />
-              Licensed in NJ + NY
+              <Shield size={13} className="text-green-400" />
+              Licensed NJ + NY
             </span>
-            <span>·</span>
-            <span>25+ Years in Business</span>
+            <span className="hidden sm:block opacity-40">|</span>
+            <span>Free on-site estimates</span>
+            <span className="hidden sm:block opacity-40">|</span>
+            <span>Permits handled</span>
           </div>
         </div>
       </section>
@@ -142,26 +162,39 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {services.map((service) => (
-              <article key={service.slug} className="border border-[var(--line)] bg-white flex flex-col">
-                <div className="aspect-video bg-[var(--paper-2)] border-b border-[var(--line)] flex items-center justify-center">
-                  {/* TODO: next/image with real photo */}
-                  <span className="text-[var(--muted)] text-sm">Photo: {service.name}</span>
-                </div>
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="font-bold text-[var(--ink)] text-xl mb-2">{service.name}</h3>
-                  <p className="text-[var(--muted)] text-sm leading-relaxed flex-1 mb-4">
-                    {service.shortDescription}
-                  </p>
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="inline-flex items-center gap-1 text-sm font-bold text-[var(--brand-red)] hover:gap-2 transition-all"
-                  >
-                    Learn more <ChevronRight size={14} />
-                  </Link>
-                </div>
-              </article>
-            ))}
+            {services.map((service) => {
+              const visual = serviceVisuals[service.slug];
+              const Icon = visual?.Icon ?? Hammer;
+              return (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  className="group border border-[var(--line)] bg-white flex flex-col hover:border-[var(--ink)] transition-colors"
+                >
+                  {/* Card image area — styled placeholder until real photos arrive */}
+                  <div className={`aspect-video bg-gradient-to-br ${visual?.accent ?? "from-[var(--ink-2)] to-[var(--ink)]"} relative overflow-hidden flex items-center justify-center`}>
+                    <Icon
+                      size={80}
+                      className="text-white/10 absolute group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <span className="relative text-[var(--brand-red)] text-xs font-bold uppercase tracking-widest">
+                      {service.shortName}
+                    </span>
+                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="font-bold text-[var(--ink)] text-xl mb-2 group-hover:text-[var(--brand-red)] transition-colors">
+                      {service.name}
+                    </h3>
+                    <p className="text-[var(--muted)] text-sm leading-relaxed flex-1 mb-4">
+                      {service.shortDescription}
+                    </p>
+                    <span className="inline-flex items-center gap-1 text-sm font-bold text-[var(--brand-red)] group-hover:gap-2 transition-all">
+                      Learn more <ChevronRight size={14} />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -203,7 +236,7 @@ export default function HomePage() {
             {[
               { target: 150, suffix: "+", label: "Projects Completed" },
               { target: 250, suffix: "+", label: "Satisfied Customers" },
-              { target: 50, suffix: "+", label: "5-Star Reviews" },
+              { target: 50,  suffix: "+", label: "5-Star Reviews" },
             ].map(({ target, suffix, label }) => (
               <div key={label}>
                 <div className="font-display font-black text-white mb-1" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>
