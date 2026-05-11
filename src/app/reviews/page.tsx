@@ -64,7 +64,7 @@ export default function ReviewsPage() {
               <p className="text-[var(--muted)] text-sm sm:border-l sm:border-[var(--line)] sm:pl-4">
                 Had a great experience?{" "}
                 <a
-                  href={siteConfig.social.google}
+                  href={siteConfig.social.googleReview}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-semibold text-[var(--brand-red)] hover:underline"

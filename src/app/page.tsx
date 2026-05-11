@@ -300,7 +300,7 @@ export default function HomePage() {
             </Link>
             <span className="hidden sm:inline text-[var(--muted)]">·</span>
             <a
-              href={siteConfig.social.google}
+              href={siteConfig.social.googleReview}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-semibold text-[var(--muted)] hover:text-[var(--brand-red)] transition-colors"

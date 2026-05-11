@@ -46,6 +46,8 @@ export const siteConfig = {
   },
   social: {
     google: "https://share.google/PgdwfEBKFF1q4wnlZ",
+    googleReview: "https://www.google.com/search?hl=en-US&gl=us&q=True+Star+Contracting,+54+Hedden+Terrace,+North+Arlington,+NJ+07031&ludocid=15729902838892807638&lsig=AB86z5Xt08fPMQYLtIJ1cTfBQj9M#lrd=0x89c255444fb59d13:0xda4bd74a979d45d6,3",
+    instagram: "https://www.instagram.com/truestarcontracting/",
     facebook: "{{TODO: Facebook URL}}",
   },
   url: "https://truestarcontracting.com",
