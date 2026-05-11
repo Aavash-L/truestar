@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import { services } from "@/data/services";
@@ -14,13 +15,15 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company */}
           <div>
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-[var(--brand-red)] flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-black text-sm">TC</span>
-              </div>
-              <div className="leading-tight">
-                <div className="font-black text-white text-sm tracking-tight uppercase">True Star Contracting LLC</div>
-                <div className="text-[10px] text-[var(--muted)] uppercase tracking-widest">Free Estimate · Fully Insured</div>
+            <div className="mb-6">
+              <div className="bg-white rounded px-2 py-1 inline-block">
+                <Image
+                  src="/truestarlogo.png"
+                  alt="True Star Contracting LLC"
+                  height={44}
+                  width={101}
+                  className="object-contain"
+                />
               </div>
             </div>
             <p className="text-[var(--muted)] text-sm leading-relaxed mb-4">

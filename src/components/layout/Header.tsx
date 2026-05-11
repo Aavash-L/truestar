@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
@@ -25,17 +26,15 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
-            {/* TODO: replace with next/image when logo asset is available */}
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-[var(--brand-red)] flex items-center justify-center">
-                <span className="text-white font-black text-sm">TC</span>
-              </div>
-              <div className="leading-tight">
-                <div className="font-black text-[var(--ink)] text-sm tracking-tight uppercase">True Star</div>
-                <div className="text-[10px] text-[var(--muted)] uppercase tracking-widest">Contracting LLC</div>
-              </div>
-            </div>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/truestarlogo.png"
+              alt="True Star Contracting LLC"
+              height={52}
+              width={119}
+              className="object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -113,13 +112,15 @@ export function Header() {
       {mobileOpen && (
         <div className="lg:hidden fixed inset-0 z-50 bg-[var(--ink)] flex flex-col">
           <div className="flex items-center justify-between p-6 border-b border-[var(--ink-2)]">
-            <Link href="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-[var(--brand-red)] flex items-center justify-center">
-                <span className="text-white font-black text-sm">TC</span>
-              </div>
-              <div className="leading-tight">
-                <div className="font-black text-white text-sm tracking-tight uppercase">True Star</div>
-                <div className="text-[10px] text-[var(--muted)] uppercase tracking-widest">Contracting LLC</div>
+            <Link href="/" onClick={() => setMobileOpen(false)} className="flex items-center">
+              <div className="bg-white rounded px-2 py-1">
+                <Image
+                  src="/truestarlogo.png"
+                  alt="True Star Contracting LLC"
+                  height={40}
+                  width={92}
+                  className="object-contain"
+                />
               </div>
             </Link>
             <button
