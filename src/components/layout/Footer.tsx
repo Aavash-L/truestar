@@ -4,6 +4,7 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import { services } from "@/data/services";
 import { towns } from "@/data/towns";
+import { CopyEmail } from "@/components/CopyEmail";
 
 const topTowns = towns.filter((t) => t.tier === 1).slice(0, 12);
 
@@ -99,11 +100,12 @@ export function Footer() {
                   <span className="text-sm font-semibold text-white">{siteConfig.phone.display}</span>
                 </a>
               </li>
-              <li>
-                <a href={`mailto:${siteConfig.email}`} className="flex items-start gap-2 text-[var(--muted)] hover:text-white transition-colors">
-                  <Mail size={14} className="mt-0.5 flex-shrink-0 text-[var(--brand-red)]" />
-                  <span className="text-sm">{siteConfig.email}</span>
-                </a>
+              <li className="flex items-start gap-2">
+                <Mail size={14} className="mt-0.5 flex-shrink-0 text-[var(--brand-red)]" />
+                <CopyEmail
+                  email={siteConfig.email}
+                  className="text-sm text-[var(--muted)] hover:text-white transition-colors cursor-pointer text-left"
+                />
               </li>
               <li className="flex items-start gap-2">
                 <MapPin size={14} className="mt-0.5 flex-shrink-0 text-[var(--brand-red)]" />

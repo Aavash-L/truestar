@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import { EstimateForm } from "@/components/forms/EstimateForm";
+import { CopyEmail } from "@/components/CopyEmail";
 
 export const metadata: Metadata = {
   title: "Contact Us | True Star Contracting LLC",
@@ -42,18 +43,17 @@ export default function ContactPage() {
                     </div>
                   </a>
                 </li>
-                <li>
-                  <a href={`mailto:${siteConfig.email}`} className="flex items-start gap-4 group">
-                    <div className="w-10 h-10 bg-[var(--paper-2)] border border-[var(--line)] flex items-center justify-center flex-shrink-0">
-                      <Mail size={18} className="text-[var(--ink)]" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold uppercase tracking-widest text-[var(--muted)] mb-1">Email</div>
-                      <div className="text-[var(--ink)] group-hover:text-[var(--brand-red)] transition-colors">
-                        {siteConfig.email}
-                      </div>
-                    </div>
-                  </a>
+                <li className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-[var(--paper-2)] border border-[var(--line)] flex items-center justify-center flex-shrink-0">
+                    <Mail size={18} className="text-[var(--ink)]" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold uppercase tracking-widest text-[var(--muted)] mb-1">Email</div>
+                    <CopyEmail
+                      email={siteConfig.email}
+                      className="text-[var(--ink)] hover:text-[var(--brand-red)] transition-colors cursor-pointer text-left"
+                    />
+                  </div>
                 </li>
                 <li className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-[var(--paper-2)] border border-[var(--line)] flex items-center justify-center flex-shrink-0">
