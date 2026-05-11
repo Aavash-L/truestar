@@ -39,7 +39,7 @@ export const siteConfig = {
     googleReviewCount: 42,
   },
   licenses: {
-    njLicense: "{{TODO: NJ contractor license number}}",
+    njLicense: "02047",
     nyLicense: "{{TODO: NY contractor license number}}",
     njDep: "02047",
     epaAhera: "{{TODO: EPA AHERA certification number}}",
