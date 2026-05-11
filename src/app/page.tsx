@@ -60,7 +60,7 @@ export default function HomePage() {
           preload="auto"
           poster="/images/Jobs/garage-demolition.jpg"
         >
-          <source src="/videos/hero-web.mp4" type="video/mp4" />
+          <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
         {/* Gradient overlay — light at top, heavy at bottom for legibility */}
