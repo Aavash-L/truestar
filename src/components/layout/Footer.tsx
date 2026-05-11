@@ -29,7 +29,6 @@ export function Footer() {
             <div className="text-xs text-[var(--muted)] space-y-1">
               <div>NJ License: {siteConfig.licenses.njLicense}</div>
               <div>NJ DOL Certified</div>
-              <div>EPA AHERA Certified</div>
             </div>
             <div className="mt-5">
               <a

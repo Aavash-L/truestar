@@ -141,11 +141,6 @@ export default function HomePage() {
             <span className="hidden sm:block text-[var(--line)]">|</span>
             <span className="flex items-center gap-1.5">
               <CheckCircle size={14} className="text-green-600" />
-              EPA AHERA Certified
-            </span>
-            <span className="hidden sm:block text-[var(--line)]">|</span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle size={14} className="text-green-600" />
               Fully Insured
             </span>
             <span className="hidden sm:block text-[var(--line)]">|</span>

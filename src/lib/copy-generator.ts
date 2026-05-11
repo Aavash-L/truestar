@@ -35,7 +35,7 @@ const openingsByService = {
   ],
   "asbestos-removal": [
     (town: Town) =>
-      `Asbestos abatement in ${town.name} isn't a job for an unlicensed crew. True Star is NJ DOL licensed, EPA AHERA certified, and has been removing asbestos-containing materials from ${town.county} County buildings for over 25 years.`,
+      `Asbestos abatement in ${town.name} isn't a job for an unlicensed crew. True Star is NJ DOL licensed, and has been removing asbestos-containing materials from ${town.county} County buildings for over 25 years.`,
     (town: Town) =>
       `If your ${town.name} property was built before 1980, asbestos is a realistic possibility — in floor tiles, pipe insulation, ceiling tiles, or siding. True Star conducts testing, handles the NJ DOL notification, and removes it properly so your project doesn't stall.`,
     (town: Town) =>
@@ -82,7 +82,7 @@ const whyUsFramings = [
   (town: Town, service: Service) => [
     {
       heading: "Licensed for this exact work",
-      body: `True Star is NJ DOL certified and EPA AHERA licensed for ${service.name.toLowerCase()} — not a general contractor doing it on the side. In ${town.name}, you can verify our credentials before we start.`,
+      body: `True Star is NJ DOL certified for ${service.name.toLowerCase()} — not a general contractor doing it on the side. In ${town.name}, you can verify our credentials before we start.`,
     },
     {
       heading: "Permits handled, period",

@@ -118,7 +118,7 @@ export const services: Service[] = [
     shortDescription:
       "Licensed NJ asbestos abatement for homes and commercial buildings. Testing, removal, air clearance, and disposal — fully certified.",
     longDescription:
-      "Asbestos in your building is a legal and health liability. True Star is licensed by the NJ DOL and EPA AHERA-certified to handle asbestos removal on any residential or commercial property in New Jersey. We test, remove, air-clear, and dispose of all asbestos-containing materials — and we do it without stopping your project in its tracks.",
+      "Asbestos in your building is a legal and health liability. True Star is licensed by the NJ DOL to handle asbestos removal on any residential or commercial property in New Jersey. We test, remove, air-clear, and dispose of all asbestos-containing materials — and we do it without stopping your project in its tracks.",
     heroImage: "/images/Jobs/asbestos-removal.jpg",
     galleryImages: [
       "/images/services/asbestos-removal/gallery-1.jpg",

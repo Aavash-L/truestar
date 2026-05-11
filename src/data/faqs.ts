@@ -12,7 +12,7 @@ export const globalFaqs: FAQ[] = [
   {
     question: "Are you licensed and insured?",
     answer:
-      "Yes. True Star Contracting LLC is licensed in both New Jersey and New York, NJ DOL certified for asbestos abatement, and EPA AHERA certified. We carry full general liability and workers' compensation insurance. We'll provide certificates on request.",
+      "Yes. True Star Contracting LLC is licensed in both New Jersey and New York, and NJ DOL certified for asbestos abatement. We carry full general liability and workers' compensation insurance. We'll provide certificates on request.",
   },
   {
     question: "Do you handle permits?",

@@ -40,9 +40,8 @@ export const siteConfig = {
   },
   licenses: {
     njLicense: "02047",
-    nyLicense: "{{TODO: NY contractor license number}}",
+    nyLicense: "523528",
     njDep: "02047",
-    epaAhera: "{{TODO: EPA AHERA certification number}}",
   },
   social: {
     google: "https://share.google/PgdwfEBKFF1q4wnlZ",
