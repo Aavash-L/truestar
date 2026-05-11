@@ -35,17 +35,17 @@ const openingsByService = {
   ],
   "asbestos-removal": [
     (town: Town) =>
-      `Asbestos abatement in ${town.name} isn't a job for an unlicensed crew. True Star is NJ DEP licensed, EPA AHERA certified, and has been removing asbestos-containing materials from ${town.county} County buildings for over 25 years.`,
+      `Asbestos abatement in ${town.name} isn't a job for an unlicensed crew. True Star is NJ DOL licensed, EPA AHERA certified, and has been removing asbestos-containing materials from ${town.county} County buildings for over 25 years.`,
     (town: Town) =>
-      `If your ${town.name} property was built before 1980, asbestos is a realistic possibility — in floor tiles, pipe insulation, ceiling tiles, or siding. True Star conducts testing, handles the NJ DEP notification, and removes it properly so your project doesn't stall.`,
+      `If your ${town.name} property was built before 1980, asbestos is a realistic possibility — in floor tiles, pipe insulation, ceiling tiles, or siding. True Star conducts testing, handles the NJ DOL notification, and removes it properly so your project doesn't stall.`,
     (town: Town) =>
-      `True Star Contracting has been the go-to for asbestos removal in ${town.name} and throughout ${town.county} County for more than two decades. We handle bulk sampling, NJ DEP filings, removal, and air clearance — all in-house, no subcontractors.`,
+      `True Star Contracting has been the go-to for asbestos removal in ${town.name} and throughout ${town.county} County for more than two decades. We handle bulk sampling, NJ DOL filings, removal, and air clearance — all in-house, no subcontractors.`,
     (town: Town) =>
       `Discovering asbestos during a renovation in ${town.name} doesn't have to derail the project. True Star mobilizes quickly, contains the work area, and completes abatement with the documentation your GC, lender, or insurance company needs to move forward.`,
     (town: Town) =>
       `${town.name}'s pre-1980 building stock — ${town.localContext.split(".")[0].toLowerCase()} — means asbestos is a real risk before any renovation or demolition. True Star handles testing, abatement, and clearance so your project stays on track.`,
     (town: Town) =>
-      `For asbestos removal in ${town.name}, True Star provides everything from initial bulk sampling through NJ DEP-compliant removal and written air clearance. We've been doing this work in ${town.county} County since before most contractors knew the DEP had regulations.`,
+      `For asbestos removal in ${town.name}, True Star provides everything from initial bulk sampling through NJ DOL-compliant removal and written air clearance. We've been doing this work in ${town.county} County since before most contractors knew the DOL had regulations.`,
   ],
   "mold-remediation": [
     (town: Town) =>
@@ -82,11 +82,11 @@ const whyUsFramings = [
   (town: Town, service: Service) => [
     {
       heading: "Licensed for this exact work",
-      body: `True Star is NJ DEP certified and EPA AHERA licensed for ${service.name.toLowerCase()} — not a general contractor doing it on the side. In ${town.name}, you can verify our credentials before we start.`,
+      body: `True Star is NJ DOL certified and EPA AHERA licensed for ${service.name.toLowerCase()} — not a general contractor doing it on the side. In ${town.name}, you can verify our credentials before we start.`,
     },
     {
       heading: "Permits handled, period",
-      body: `We pull every required permit and file every required NJ DEP notification. You don't need to know the process — that's what you're hiring us for.`,
+      body: `We pull every required permit and file every required NJ DOL notification. You don't need to know the process — that's what you're hiring us for.`,
     },
     {
       heading: "Same crew, same standard",
@@ -94,7 +94,7 @@ const whyUsFramings = [
     },
     {
       heading: "Written documentation on every job",
-      body: `Air clearance reports, project completion records, DEP filings — all provided in writing. Required by insurance, banks, and buyers; provided by us as a matter of course.`,
+      body: `Air clearance reports, project completion records, DOL filings — all provided in writing. Required by insurance, banks, and buyers; provided by us as a matter of course.`,
     },
   ],
   (town: Town, service: Service) => [
@@ -135,8 +135,8 @@ const whyUsFramings = [
   ],
   (town: Town, service: Service) => [
     {
-      heading: "NJ DEP compliance, no guessing",
-      body: `NJ has strict regulations for ${service.shortName.toLowerCase()} — and the DEP enforces them. True Star knows the requirements cold and handles every notification, permit, and inspection sign-off.`,
+      heading: "NJ DOL compliance, no guessing",
+      body: `NJ has strict regulations for ${service.shortName.toLowerCase()} — and the DOL enforces them. True Star knows the requirements cold and handles every notification, permit, and inspection sign-off.`,
     },
     {
       heading: "Air clearance and closeout documentation",
@@ -197,8 +197,8 @@ const miniFaqVariants = {
         answer: `A single-material, single-room job typically takes 1–3 days including air clearance. Multi-room or multi-material projects take longer. We'll give you a specific timeline at the estimate visit.`,
       },
       {
-        question: `Does True Star file the NJ DEP notification for ${town.name} projects?`,
-        answer: `Yes. NJ DEP notification is required for most asbestos abatement projects, and we handle the filing as part of our scope. You don't interact with the DEP.`,
+        question: `Does True Star file the NJ DOL notification for ${town.name} projects?`,
+        answer: `Yes. NJ DOL notification is required for most asbestos abatement projects, and we handle the filing as part of our scope. You don't interact with the DOL.`,
       },
     ],
     (town: Town) => [
@@ -208,11 +208,11 @@ const miniFaqVariants = {
       },
       {
         question: `Do you provide air clearance documentation for ${town.name} projects?`,
-        answer: `Yes. Every asbestos abatement project ends with a third-party air clearance test and a written clearance certificate. This is required by NJ DEP and necessary for insurance, sale, and re-occupancy.`,
+        answer: `Yes. Every asbestos abatement project ends with a third-party air clearance test and a written clearance certificate. This is required by NJ DOL and necessary for insurance, sale, and re-occupancy.`,
       },
       {
         question: `Can asbestos removal be done while tenants are in the building in ${town.name}?`,
-        answer: `No occupants may be in the work area during abatement — NJ DEP regulations require this. For multi-unit buildings, we work unit by unit and can sometimes allow occupancy in unaffected units with proper containment.`,
+        answer: `No occupants may be in the work area during abatement — NJ DOL regulations require this. For multi-unit buildings, we work unit by unit and can sometimes allow occupancy in unaffected units with proper containment.`,
       },
     ],
   ],

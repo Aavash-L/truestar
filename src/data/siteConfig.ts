@@ -41,11 +41,11 @@ export const siteConfig = {
   licenses: {
     njLicense: "{{TODO: NJ contractor license number}}",
     nyLicense: "{{TODO: NY contractor license number}}",
-    njDep: "{{TODO: NJ DEP certification number}}",
+    njDep: "02047",
     epaAhera: "{{TODO: EPA AHERA certification number}}",
   },
   social: {
-    google: "{{TODO: Google Business Profile URL}}",
+    google: "https://share.google/PgdwfEBKFF1q4wnlZ",
     facebook: "{{TODO: Facebook URL}}",
   },
   url: "https://truestarcontracting.com",

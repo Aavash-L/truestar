@@ -6,7 +6,7 @@ import { siteConfig } from "@/data/siteConfig";
 export const metadata: Metadata = {
   title: "About True Star Contracting LLC | North Arlington, NJ",
   description:
-    "25+ years of licensed demolition, asbestos removal & mold remediation in North Jersey. Family-owned, NJ DEP certified, EPA AHERA certified. Based in North Arlington, NJ.",
+    "25+ years of licensed demolition, asbestos removal & mold remediation in North Jersey. Family-owned, NJ DOL certified, EPA AHERA certified. Based in North Arlington, NJ.",
   alternates: { canonical: "/about" },
 };
 
@@ -62,7 +62,7 @@ export default function AboutPage() {
                 {[
                   `NJ Contractor License: ${siteConfig.licenses.njLicense}`,
                   `NY License: ${siteConfig.licenses.nyLicense}`,
-                  `NJ DEP Asbestos Abatement Certification: ${siteConfig.licenses.njDep}`,
+                  `NJ DOL Asbestos Abatement Certification: ${siteConfig.licenses.njDep}`,
                   `EPA AHERA Certification: ${siteConfig.licenses.epaAhera}`,
                   "General Liability Insurance — certificates on request",
                   "Workers' Compensation Insurance",

@@ -135,7 +135,7 @@ export default function HomePage() {
             <span className="hidden sm:block text-[var(--line)]">|</span>
             <span className="flex items-center gap-1.5">
               <CheckCircle size={14} className="text-green-600" />
-              NJ DEP Certified
+              NJ DOL Certified
             </span>
             <span className="hidden sm:block text-[var(--line)]">|</span>
             <span className="flex items-center gap-1.5">
@@ -219,8 +219,8 @@ export default function HomePage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {[
-              { num: "01", heading: "25+ Years On The Job", body: "We've been working in North Jersey since before most contractors knew what NJ DEP regulations were. That experience shows on every job." },
-              { num: "02", heading: "Permits Handled", body: "We pull demolition permits and file NJ DEP asbestos notifications on every applicable job. You don't need to know the process." },
+              { num: "01", heading: "25+ Years On The Job", body: "We've been working in North Jersey since before most contractors knew what NJ DOL regulations were. That experience shows on every job." },
+              { num: "02", heading: "Permits Handled", body: "We pull demolition permits and file NJ DOL asbestos notifications on every applicable job. You don't need to know the process." },
               { num: "03", heading: "24-Hour Estimate Response", body: "We visit the property, assess the scope, and give you a written estimate within 24 hours of your call. No runaround, no price guessing." },
               { num: "04", heading: "Family Owned, Locally Run", body: "We're based in North Arlington and we work across the region. We know the towns, the permit offices, and the building stock." },
             ].map(({ num, heading, body }) => (
@@ -275,7 +275,14 @@ export default function HomePage() {
                 ))}
               </span>
               <span className="font-bold text-[var(--ink)]">5.0</span>
-              <span>· 42 reviews on Google</span>
+              <a
+                href={siteConfig.social.google}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[var(--brand-red)] transition-colors"
+              >
+                · 42 reviews on Google
+              </a>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -283,13 +290,22 @@ export default function HomePage() {
               <ReviewCard key={review.id} review={review} />
             ))}
           </div>
-          <div className="text-center">
+          <div className="text-center flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/reviews"
               className="inline-flex items-center gap-1.5 font-semibold text-[var(--brand-red)] hover:gap-3 transition-all"
             >
               Read all 42 reviews <ChevronRight size={16} />
             </Link>
+            <span className="hidden sm:inline text-[var(--muted)]">·</span>
+            <a
+              href={siteConfig.social.google}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-[var(--muted)] hover:text-[var(--brand-red)] transition-colors"
+            >
+              Leave us a review on Google
+            </a>
           </div>
         </div>
       </section>

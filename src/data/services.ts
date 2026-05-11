@@ -118,7 +118,7 @@ export const services: Service[] = [
     shortDescription:
       "Licensed NJ asbestos abatement for homes and commercial buildings. Testing, removal, air clearance, and disposal — fully certified.",
     longDescription:
-      "Asbestos in your building is a legal and health liability. True Star is licensed by the NJ DEP and EPA AHERA-certified to handle asbestos removal on any residential or commercial property in New Jersey. We test, remove, air-clear, and dispose of all asbestos-containing materials — and we do it without stopping your project in its tracks.",
+      "Asbestos in your building is a legal and health liability. True Star is licensed by the NJ DOL and EPA AHERA-certified to handle asbestos removal on any residential or commercial property in New Jersey. We test, remove, air-clear, and dispose of all asbestos-containing materials — and we do it without stopping your project in its tracks.",
     heroImage: "/images/services/asbestos-removal/hero.jpg",
     galleryImages: [
       "/images/services/asbestos-removal/gallery-1.jpg",
@@ -136,7 +136,7 @@ export const services: Service[] = [
       "Air monitoring during and after removal",
       "Air clearance certification",
       "Certified disposal at licensed NJ facilities",
-      "NJ DEP compliance documentation and project closeout",
+      "NJ DOL compliance documentation and project closeout",
     ],
     processSteps: [
       {
@@ -149,7 +149,7 @@ export const services: Service[] = [
         step: 2,
         title: "Abatement plan & permits",
         description:
-          "We file the required NJ DEP notification and obtain any municipal permits before work begins — legally required and strictly enforced.",
+          "We file the required NJ DOL notification and obtain any municipal permits before work begins — legally required and strictly enforced.",
       },
       {
         step: 3,
@@ -161,13 +161,13 @@ export const services: Service[] = [
         step: 4,
         title: "Removal & bagging",
         description:
-          "Licensed technicians remove all ACM, wet it to prevent fiber release, and double-bag it in labeled, sealed containers per NJ DEP and EPA regulations.",
+          "Licensed technicians remove all ACM, wet it to prevent fiber release, and double-bag it in labeled, sealed containers per NJ DOL and EPA regulations.",
       },
       {
         step: 5,
         title: "Air clearance & sign-off",
         description:
-          "A third-party air monitoring specialist performs final air clearance testing. You get a written clearance certificate before we leave. Project documentation is filed with the DEP.",
+          "A third-party air monitoring specialist performs final air clearance testing. You get a written clearance certificate before we leave. Project documentation is filed with the DOL.",
       },
     ],
     whyItMatters:
@@ -186,7 +186,7 @@ export const services: Service[] = [
       {
         question: "Does NJ require a permit for asbestos removal?",
         answer:
-          "Yes. NJ DEP requires notification (and in most cases permits) for any asbestos abatement project. We handle all required filings — you don't need to interact with the DEP.",
+          "Yes. NJ DOL requires notification (and in most cases permits) for any asbestos abatement project. We handle all required filings — you don't need to interact with the DOL.",
       },
       {
         question: "How long does asbestos removal take?",
@@ -196,7 +196,7 @@ export const services: Service[] = [
       {
         question: "Can you remove asbestos siding without replacing it?",
         answer:
-          "Yes, encapsulation is sometimes permitted by NJ DEP as an alternative to removal for siding in good condition. We'll advise you on which approach makes sense for your situation, timeline, and budget.",
+          "Yes, encapsulation is sometimes permitted by NJ DOL as an alternative to removal for siding in good condition. We'll advise you on which approach makes sense for your situation, timeline, and budget.",
       },
       {
         question: "What's the cost of asbestos removal?",
@@ -566,7 +566,7 @@ export const subServices: SubService[] = [
       "Full residential teardowns for new construction or land redevelopment across North Jersey. We handle the entire process — permits, utility disconnects, demolition, foundation removal, debris hauling, and final site grading. 25+ years experience, fully insured, licensed in NJ and NY.",
     heroImage: "/images/services/demolition/hero.jpg",
     whyHireAPro:
-      "A full house teardown is the most permit-intensive and regulated demolition job a homeowner can order. NJ law requires pre-demolition asbestos and lead testing for homes built before 1980. DEP notifications, municipal demolition permits, and utility company sign-offs must all line up before the first machine touches the structure. Get one step out of order and the work stops — sometimes for weeks. We've run this process hundreds of times. We know the sequence, the inspectors, and the disposal requirements. You get a graded, permit-closed site on schedule.",
+      "A full house teardown is the most permit-intensive and regulated demolition job a homeowner can order. NJ law requires pre-demolition asbestos and lead testing for homes built before 1980. DOL notifications, municipal demolition permits, and utility company sign-offs must all line up before the first machine touches the structure. Get one step out of order and the work stops — sometimes for weeks. We've run this process hundreds of times. We know the sequence, the inspectors, and the disposal requirements. You get a graded, permit-closed site on schedule.",
     processSteps: [
       {
         step: 1,
@@ -594,7 +594,7 @@ export const subServices: SubService[] = [
       },
     ],
     whatIncluded: [
-      "All required permits — NJ DEP, local building, utility",
+      "All required permits — NJ DOL, local building, utility",
       "Pre-demolition asbestos and lead testing",
       "Asbestos abatement if needed (in-house, no subcontracting)",
       "Utility disconnection coordination",
@@ -613,7 +613,7 @@ export const subServices: SubService[] = [
       {
         question: "Is asbestos testing always required for a house teardown?",
         answer:
-          "For homes built before 1980, yes — it's required by NJ DEP before demolition can begin. We conduct the testing as part of the project.",
+          "For homes built before 1980, yes — it's required by NJ DOL before demolition can begin. We conduct the testing as part of the project.",
       },
       {
         question: "Do you handle all the permits?",

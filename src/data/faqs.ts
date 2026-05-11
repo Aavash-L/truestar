@@ -12,12 +12,12 @@ export const globalFaqs: FAQ[] = [
   {
     question: "Are you licensed and insured?",
     answer:
-      "Yes. True Star Contracting LLC is licensed in both New Jersey and New York, NJ DEP certified for asbestos abatement, and EPA AHERA certified. We carry full general liability and workers' compensation insurance. We'll provide certificates on request.",
+      "Yes. True Star Contracting LLC is licensed in both New Jersey and New York, NJ DOL certified for asbestos abatement, and EPA AHERA certified. We carry full general liability and workers' compensation insurance. We'll provide certificates on request.",
   },
   {
     question: "Do you handle permits?",
     answer:
-      "Yes — permits are included in our scope. We file demolition permits and NJ DEP asbestos abatement notifications on every applicable job. You don't need to interact with the municipality or the DEP.",
+      "Yes — permits are included in our scope. We file demolition permits and NJ DOL asbestos abatement notifications on every applicable job. You don't need to interact with the municipality or the DOL.",
   },
   {
     question: "How long does a full demolition take?",
@@ -63,7 +63,7 @@ export const serviceSpecificFaqs: Record<string, FAQ[]> = {
     {
       question: "Does NJ require air clearance testing?",
       answer:
-        "Yes, NJ DEP requires post-abatement air clearance before a work area can be reoccupied. We coordinate third-party clearance testing as part of every abatement project.",
+        "Yes, NJ DOL requires post-abatement air clearance before a work area can be reoccupied. We coordinate third-party clearance testing as part of every abatement project.",
     },
     {
       question: "What materials commonly contain asbestos?",

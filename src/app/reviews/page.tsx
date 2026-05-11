@@ -25,15 +25,20 @@ export default function ReviewsPage() {
           <h1 className="font-display font-extrabold text-white mb-4" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>
             Customer Reviews
           </h1>
-          <div className="flex items-center gap-3 text-white/80">
+          <a
+            href={siteConfig.social.google}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 text-white/80 hover:text-white transition-colors w-fit"
+          >
             <div className="flex">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} size={20} className="text-yellow-400 fill-yellow-400" />
               ))}
             </div>
             <span className="text-2xl font-bold text-white">{siteConfig.stats.googleRating}</span>
-            <span>· {siteConfig.stats.googleReviewCount} reviews on Google</span>
-          </div>
+            <span>· {siteConfig.stats.googleReviewCount} reviews on Google ↗</span>
+          </a>
         </div>
       </section>
 
@@ -46,16 +51,28 @@ export default function ReviewsPage() {
           </div>
 
           <div className="text-center border-t border-[var(--line)] pt-12">
-            <p className="text-[var(--muted)] mb-4">Had a great experience with True Star?</p>
-            <a
-              href={siteConfig.social.google}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[var(--ink)] text-white px-6 py-3 font-semibold hover:bg-[var(--brand-red)] transition-colors"
-            >
-              <Star size={16} />
-              Leave a Review on Google
-            </a>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href={siteConfig.social.google}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[var(--ink)] text-white px-6 py-3 font-semibold hover:bg-[var(--brand-red)] transition-colors"
+              >
+                <Star size={16} />
+                See Our Reviews on Google
+              </a>
+              <p className="text-[var(--muted)] text-sm sm:border-l sm:border-[var(--line)] sm:pl-4">
+                Had a great experience?{" "}
+                <a
+                  href={siteConfig.social.google}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-[var(--brand-red)] hover:underline"
+                >
+                  Leave us a review
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>

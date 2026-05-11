@@ -30,13 +30,13 @@ These are blocking or near-blocking items that require client-supplied content:
 ### Credentials (HIGH PRIORITY — do not invent these)
 - [ ] NJ Contractor License number → update `src/data/siteConfig.ts` → `licenses.njLicense`
 - [ ] NY License number → update `src/data/siteConfig.ts` → `licenses.nyLicense`
-- [ ] NJ DEP Asbestos Certification number → `licenses.njDep`
+- [x] NJ DOL Asbestos Certification number → `licenses.njDep` (**02047** — done)
 - [ ] EPA AHERA Certification number → `licenses.epaAhera`
 
 ### Content
 - [ ] Owner name and bio for About page (`src/app/about/page.tsx` — marked `{{TODO}}`)
 - [ ] Chat bubble avatar photo — place at `/client-assets/avatar.jpg`, then update `src/components/ChatBubbleWidget.tsx` header `div` to use `next/image`. Currently shows "TC" monogram.
-- [ ] Google Business Profile URL → `src/data/siteConfig.ts` → `social.google`
+- [x] Google Business Profile URL → `src/data/siteConfig.ts` → `social.google` (done)
 - [ ] Facebook URL (if applicable) → `src/data/siteConfig.ts` → `social.facebook`
 
 ### Env Vars (before deploying)

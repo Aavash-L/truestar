@@ -69,7 +69,7 @@ export default async function TownPage({
       : [
           `${town.name} is part of our extended service area — we make the trip for the right projects.`,
           "We bring 25+ years of North Jersey experience to every job in " + town.county + " County.",
-          "Full compliance with local permit and NJ DEP requirements.",
+          "Full compliance with local permit and NJ DOL requirements.",
           "Written clearance documentation on every remediation and abatement project.",
         ];
 
