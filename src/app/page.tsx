@@ -59,7 +59,7 @@ export default function HomePage() {
           playsInline
           poster="/images/hero/hero.jpg"
         >
-          <source src="/videos/hero.mp4" type="video/mp4" />
+          <source src="/videos/mainvideo.mp4" type="video/mp4" />
         </video>
 
         {/* Gradient overlay — light at top, heavy at bottom for legibility */}
