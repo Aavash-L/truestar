@@ -710,6 +710,96 @@ export const subServices: SubService[] = [
     ],
     relatedServices: ["concrete-slab-removal", "concrete-core-drilling", "site-clearing", "garage-demolition"],
   },
+
+  {
+    slug: "mobile-home-demolition",
+    name: "Mobile Home & Office Demolition",
+    parentSlug: "demolition",
+    category: "residential",
+    prefillCategory: "Residential",
+    shortDescription:
+      "Full removal and disposal of mobile homes, manufactured homes, and mobile office trailers across North Jersey.",
+    longDescription:
+      "Licensed demolition and removal of mobile homes, manufactured homes, and mobile office units for residential and commercial properties. We handle disconnects, permits, full teardown, and debris hauling — leaving the site clean and ready for whatever comes next.",
+    heroImage: "/images/services/demolition/mobile-home-demolition-hero.jpg",
+    whyHireAPro:
+      "Mobile homes and manufactured units have construction characteristics that differ significantly from site-built structures — steel chassis, pier foundations, LP/gas lines, and electrical service panels that must be properly disconnected before any work begins. Mobile office trailers on commercial sites often require coordination with the property owner, site utilities, and in some cases local permits depending on municipality. Improper demolition can leave buried utilities, unstable piers, or environmental hazards that create liability for the property owner. True Star handles the full sequence: utility disconnects, permit coordination, teardown, and licensed disposal of all materials — so you're left with a clean, safe, permit-closed site.",
+    processSteps: [
+      {
+        step: 1,
+        title: "Site Assessment",
+        description:
+          "We inspect the unit's construction type, chassis condition, utility connections (electric, gas, water, sewer), and site access before quoting. No surprises on demo day.",
+      },
+      {
+        step: 2,
+        title: "Utility Disconnects",
+        description:
+          "All utility connections are properly disconnected and capped — electrical service removed, gas lines shut off and purged, water and sewer lines properly capped at the source.",
+      },
+      {
+        step: 3,
+        title: "Permit Coordination",
+        description:
+          "Where required by the municipality, we pull the demolition permit and handle any required notifications before work begins.",
+      },
+      {
+        step: 4,
+        title: "Demolition & Removal",
+        description:
+          "The structure is dismantled section by section. Steel chassis, framing, skirting, roofing, and interior materials are sorted and removed. Pier blocks and footings are cleared.",
+      },
+      {
+        step: 5,
+        title: "Site Cleanup & Grading",
+        description:
+          "All debris is hauled to licensed disposal facilities. The site is graded level and left clean — ready for new construction, paving, or landscaping.",
+      },
+    ],
+    whatIncluded: [
+      "Pre-demolition site assessment and written estimate",
+      "Utility disconnection coordination (electric, gas, water, sewer)",
+      "Permit pulling when required by municipality",
+      "Full structural teardown (frame, roof, walls, flooring, chassis)",
+      "Pier block and foundation clearing",
+      "Debris sorting, hauling, and licensed disposal",
+      "Site grading and final cleanup",
+      "Free written estimate within 24 hours",
+    ],
+    faq: [
+      {
+        question: "Do I need a permit to demolish a mobile home in NJ?",
+        answer:
+          "In most NJ municipalities, yes — a demolition permit is required. We pull the permit as part of the job. Requirements vary by town, so we handle the coordination for you.",
+      },
+      {
+        question: "How long does mobile home demolition take?",
+        answer:
+          "Most single-wide mobile homes take 1–2 days. Double-wides typically run 2–3 days. Mobile office trailers vary by size — we'll give you a specific timeline at the estimate.",
+      },
+      {
+        question: "Can you remove the steel chassis as well?",
+        answer:
+          "Yes. We remove and haul away the entire unit including the steel frame/chassis. Everything goes — nothing is left on-site unless you specifically request it.",
+      },
+      {
+        question: "What happens to the utilities before you start?",
+        answer:
+          "We coordinate all utility disconnects before demo begins — electric service is removed, gas is shut off and purged, and water and sewer lines are capped. No work starts until that's confirmed.",
+      },
+      {
+        question: "Can you demolish a mobile office on a commercial property?",
+        answer:
+          "Yes. We work on commercial sites regularly and can coordinate directly with property managers, site supervisors, or your general contractor on scheduling and site access.",
+      },
+      {
+        question: "How much does mobile home demolition cost?",
+        answer:
+          "Typically $3,000–$8,000 depending on size, chassis removal, pier clearing, and site access. Every job gets a free written estimate — call or submit the form.",
+      },
+    ],
+    relatedServices: ["garage-demolition", "house-teardown", "concrete-cutting", "shed-demolition"],
+  },
 ];
 
 export function getSubService(slug: string): SubService | undefined {

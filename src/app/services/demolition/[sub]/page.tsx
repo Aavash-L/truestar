@@ -26,6 +26,7 @@ const RELATED: Record<string, { name: string; href: string | null }> = {
   "bathroom-demolition":     { name: "Bathroom Demolition",              href: "/services/demolition/bathroom-demolition" },
   "house-teardown":          { name: "Full House Teardown",              href: "/services/demolition/house-teardown" },
   "concrete-cutting":        { name: "Concrete Cutting & Demolition",    href: "/services/demolition/concrete-cutting" },
+  "mobile-home-demolition":  { name: "Mobile Home & Office Demolition",  href: "/services/demolition/mobile-home-demolition" },
   "shed-demolition":         { name: "Shed/Outbuilding Demolition",      href: null },
   "deck-porch-demolition":   { name: "Deck & Porch Demolition",          href: null },
   "junk-removal":            { name: "Junk Removal & Cleanouts",         href: null },
