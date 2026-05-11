@@ -57,9 +57,10 @@ export default function HomePage() {
           muted
           loop
           playsInline
-          poster="/images/hero/hero.jpg"
+          preload="auto"
+          poster="/images/Jobs/garage-demolition.jpg"
         >
-          <source src="/videos/mainvideo.mp4" type="video/mp4" />
+          <source src="/videos/hero-web.mp4" type="video/mp4" />
         </video>
 
         {/* Gradient overlay — light at top, heavy at bottom for legibility */}
