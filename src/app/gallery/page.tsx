@@ -1,29 +1,101 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { Lightbox } from "@/components/ui/Lightbox";
 
 type GalleryImage = {
   src: string;
   alt: string;
   caption: string;
-  category: "demolition" | "asbestos" | "mold" | "all";
+  category: "demolition" | "asbestos" | "mold";
 };
 
-// TODO: populate with real client photos from /public/images/gallery/
 const galleryImages: GalleryImage[] = [
-  { src: "/images/gallery/placeholder-1.jpg", alt: "Demolition project in Kearny, NJ", caption: "Interior demolition — Kearny, NJ", category: "demolition" },
-  { src: "/images/gallery/placeholder-2.jpg", alt: "Asbestos removal in North Arlington, NJ", caption: "Pipe insulation abatement — North Arlington, NJ", category: "asbestos" },
-  { src: "/images/gallery/placeholder-3.jpg", alt: "Mold remediation in Belleville, NJ", caption: "Basement mold remediation — Belleville, NJ", category: "mold" },
-  { src: "/images/gallery/placeholder-4.jpg", alt: "Kitchen gut demolition in Nutley, NJ", caption: "Full kitchen gut — Nutley, NJ", category: "demolition" },
-  { src: "/images/gallery/placeholder-5.jpg", alt: "Asbestos floor tile removal in Newark, NJ", caption: "VAT floor tile abatement — Newark, NJ", category: "asbestos" },
-  { src: "/images/gallery/placeholder-6.jpg", alt: "Mold remediation in Bloomfield, NJ", caption: "Mold clearance — Bloomfield, NJ", category: "mold" },
+  // ── Asbestos ────────────────────────────────────────────────────────────
+  { src: "/images/Jobs/asbestos-removal.jpg",               alt: "Asbestos removal in progress",                    caption: "Asbestos removal",                          category: "asbestos" },
+  { src: "/images/Jobs/asbestos-pipes-removal.jpg",         alt: "Asbestos pipe insulation removal",                caption: "Pipe insulation abatement",                 category: "asbestos" },
+  { src: "/images/Jobs/asbestos-pipes-removal1.jpg",        alt: "Asbestos pipe insulation removal",                caption: "Pipe insulation abatement",                 category: "asbestos" },
+  { src: "/images/Jobs/asbestos-plaster-removal.jpg",       alt: "Asbestos plaster removal",                        caption: "Asbestos plaster removal",                  category: "asbestos" },
+  { src: "/images/Jobs/asbestos-popcorn-ceiling.jpg",       alt: "Asbestos popcorn ceiling before removal",         caption: "Popcorn ceiling — before abatement",        category: "asbestos" },
+  { src: "/images/Jobs/asbestos-popcorn-ceiling-removal.jpg", alt: "Asbestos popcorn ceiling removal in progress",  caption: "Popcorn ceiling removal",                   category: "asbestos" },
+  { src: "/images/Jobs/asbestos-popcorn-ceiling1.jpg",      alt: "Asbestos popcorn ceiling abatement",              caption: "Popcorn ceiling abatement",                 category: "asbestos" },
+  { src: "/images/Jobs/asbestos-popcorn-ceiling2.jpg",      alt: "Asbestos popcorn ceiling abatement",              caption: "Popcorn ceiling abatement",                 category: "asbestos" },
+  { src: "/images/Jobs/asbestos-siding-removal.jpg",        alt: "Asbestos siding removal",                         caption: "Asbestos siding removal",                   category: "asbestos" },
+  { src: "/images/Jobs/asbestos-siding-removal1.jpg",       alt: "Asbestos siding removal",                         caption: "Asbestos siding removal",                   category: "asbestos" },
+  { src: "/images/Jobs/asbestos-siding-removal2.jpg",       alt: "Asbestos siding removal",                         caption: "Asbestos siding removal",                   category: "asbestos" },
+  { src: "/images/Jobs/asbestos-siding-removal3.jpg",       alt: "Asbestos siding removal",                         caption: "Asbestos siding removal",                   category: "asbestos" },
+  { src: "/images/Jobs/asbestos-siding-removal4.jpg",       alt: "Asbestos siding removal",                         caption: "Asbestos siding removal",                   category: "asbestos" },
+  { src: "/images/Jobs/asbestos-siding-removal5.jpg",       alt: "Asbestos siding removal",                         caption: "Asbestos siding removal",                   category: "asbestos" },
+  { src: "/images/Jobs/asbestos-siding-removal6.jpg",       alt: "Asbestos siding removal",                         caption: "Asbestos siding removal",                   category: "asbestos" },
+  { src: "/images/Jobs/asbestos-sign.jpg",                  alt: "Asbestos hazard zone signage",                    caption: "Proper asbestos hazard signage on-site",    category: "asbestos" },
+  { src: "/images/Jobs/asbestos-tiles-removal-decon.jpg",   alt: "Asbestos tile removal with decontamination unit", caption: "Tile abatement with decon unit",             category: "asbestos" },
+  { src: "/images/Jobs/asbestos-decontamination-unit.jpg",  alt: "Asbestos decontamination unit on-site",           caption: "Decontamination unit setup",                category: "asbestos" },
+  { src: "/images/Jobs/siding-1.jpg",                       alt: "Asbestos siding removal — North Jersey",          caption: "Siding removal",                            category: "asbestos" },
+  { src: "/images/Jobs/siding-2.jpg",                       alt: "Asbestos siding removal — North Jersey",          caption: "Siding removal",                            category: "asbestos" },
+  { src: "/images/Jobs/siding-3.jpg",                       alt: "Asbestos siding removal — North Jersey",          caption: "Siding removal",                            category: "asbestos" },
+
+  // ── Demolition ──────────────────────────────────────────────────────────
+  { src: "/images/Jobs/garage-demolition.jpg",              alt: "Garage demolition — North Jersey",                caption: "Garage demolition",                         category: "demolition" },
+  { src: "/images/Jobs/garage-demolition1.jpg",             alt: "Garage demolition in progress",                   caption: "Garage demolition",                         category: "demolition" },
+  { src: "/images/Jobs/deck-demolition.jpg",                alt: "Deck demolition in progress",                     caption: "Deck demolition",                           category: "demolition" },
+  { src: "/images/Jobs/before-deck-demolition.jpg",         alt: "Deck before demolition",                          caption: "Deck demolition — before",                  category: "demolition" },
+  { src: "/images/Jobs/before-deck-demolition1.jpg",        alt: "Deck before demolition",                          caption: "Deck demolition — before",                  category: "demolition" },
+  { src: "/images/Jobs/before-deck-demolition2.jpg",        alt: "Deck before demolition",                          caption: "Deck demolition — before",                  category: "demolition" },
+  { src: "/images/Jobs/after-deck-demolition.jpg",          alt: "Site cleared after deck demolition",              caption: "Deck demolition — after",                   category: "demolition" },
+  { src: "/images/Jobs/before-fence-demolition.jpg",        alt: "Fence before demolition",                         caption: "Fence demolition — before",                 category: "demolition" },
+  { src: "/images/Jobs/before-fence-demolition1.jpg",       alt: "Fence before demolition",                         caption: "Fence demolition — before",                 category: "demolition" },
+  { src: "/images/Jobs/after-fence-demolition.jpg",         alt: "Site cleared after fence demolition",             caption: "Fence demolition — after",                  category: "demolition" },
+  { src: "/images/Jobs/after-fence-demolition1.jpg",        alt: "Fence demolition complete",                       caption: "Fence removal — site cleared",              category: "demolition" },
+  { src: "/images/Jobs/shed-demolition.jpg",                alt: "Shed demolition — North Jersey",                  caption: "Shed demolition",                           category: "demolition" },
+  { src: "/images/Jobs/concrete-patio-demolition.jpg",      alt: "Concrete patio demolition",                       caption: "Concrete patio demolition",                 category: "demolition" },
+  { src: "/images/Jobs/asphalt-removal.jpg",                alt: "Asphalt removal",                                 caption: "Asphalt removal",                           category: "demolition" },
+  { src: "/images/Jobs/asphalt-removal1.jpg",               alt: "Asphalt removal",                                 caption: "Asphalt removal",                           category: "demolition" },
+  { src: "/images/Jobs/asphalt-removal-ground-leveling.jpg", alt: "Asphalt removal and ground leveling",            caption: "Asphalt removal & ground leveling",         category: "demolition" },
+  { src: "/images/Jobs/mobile-office-demolition.jpg",       alt: "Mobile office demolition",                        caption: "Mobile office demolition",                  category: "demolition" },
+  { src: "/images/Jobs/demolition-machine.jpg",             alt: "Demolition equipment on-site",                    caption: "Demolition equipment on-site",              category: "demolition" },
+  { src: "/images/Jobs/before-1.jpg",                       alt: "Job site before demolition",                      caption: "Job site — before",                         category: "demolition" },
+  { src: "/images/Jobs/before-2.jpg",                       alt: "Job site before demolition",                      caption: "Job site — before",                         category: "demolition" },
+  { src: "/images/Jobs/before-3.jpg",                       alt: "Job site before demolition",                      caption: "Job site — before",                         category: "demolition" },
+  { src: "/images/Jobs/img-2633.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-2642.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4382.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4392.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4466.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4468.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4599.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4600.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4665.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4667.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4668.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4832.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4834.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4945.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4946.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4947.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4950.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-4952.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-5043.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-5045.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-5051.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-5052.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-5116.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-5117.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-5119.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-5121.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-5123.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-5167.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-5169.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-5171.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-5172.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-5174.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
+  { src: "/images/Jobs/img-5176.jpg",                       alt: "True Star Contracting job site",                  caption: "On-site work",                              category: "demolition" },
 ];
 
 const filters = [
-  { label: "All", value: "all" },
+  { label: "All",        value: "all"        },
   { label: "Demolition", value: "demolition" },
-  { label: "Asbestos", value: "asbestos" },
-  { label: "Mold", value: "mold" },
+  { label: "Asbestos",   value: "asbestos"   },
+  { label: "Mold",       value: "mold"       },
 ];
 
 export default function GalleryPage() {
@@ -64,18 +136,28 @@ export default function GalleryPage() {
             ))}
           </div>
 
-          {/* Grid */}
+          {/* Masonry grid */}
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
             {filtered.map((img, i) => (
               <button
-                key={i}
+                key={img.src}
                 onClick={() => setLightboxIdx(i)}
-                className="block w-full border border-[var(--line)] overflow-hidden hover:border-[var(--brand-red)] transition-colors group"
+                className="block w-full border border-[var(--line)] overflow-hidden hover:border-[var(--brand-red)] transition-colors group break-inside-avoid"
                 aria-label={`View ${img.caption}`}
               >
-                {/* TODO: replace with next/image */}
-                <div className="aspect-video bg-[var(--paper-2)] flex items-center justify-center">
-                  <span className="text-[var(--muted)] text-xs">{img.caption}</span>
+                <div className="relative w-full overflow-hidden">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={800}
+                    height={600}
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    loading={i < 6 ? "eager" : "lazy"}
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <p className="text-white text-xs font-medium">{img.caption}</p>
+                  </div>
                 </div>
               </button>
             ))}

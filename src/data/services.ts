@@ -32,7 +32,7 @@ export const services: Service[] = [
       "Interior and selective demolition for residential and commercial projects. Full site prep, debris removal, and permits handled.",
     longDescription:
       "True Star Contracting has been handling demolition work across North Jersey for over 25 years. Whether you need a single room stripped to the studs or a full commercial gut job, we plan it right, pull the permits, and leave the site clean. No shortcuts. We work around your schedule and coordinate with general contractors, architects, and property managers.",
-    heroImage: "/images/services/demolition/hero.jpg",
+    heroImage: "/images/Jobs/garage-demolition.jpg",
     galleryImages: [
       "/images/services/demolition/gallery-1.jpg",
       "/images/services/demolition/gallery-2.jpg",
@@ -119,7 +119,7 @@ export const services: Service[] = [
       "Licensed NJ asbestos abatement for homes and commercial buildings. Testing, removal, air clearance, and disposal — fully certified.",
     longDescription:
       "Asbestos in your building is a legal and health liability. True Star is licensed by the NJ DOL and EPA AHERA-certified to handle asbestos removal on any residential or commercial property in New Jersey. We test, remove, air-clear, and dispose of all asbestos-containing materials — and we do it without stopping your project in its tracks.",
-    heroImage: "/images/services/asbestos-removal/hero.jpg",
+    heroImage: "/images/Jobs/asbestos-removal.jpg",
     galleryImages: [
       "/images/services/asbestos-removal/gallery-1.jpg",
       "/images/services/asbestos-removal/gallery-2.jpg",
@@ -213,7 +213,7 @@ export const services: Service[] = [
       "Professional mold testing, removal, and remediation for residential and commercial properties across North Jersey.",
     longDescription:
       "Mold in a building is not just an aesthetic problem — it's a health hazard and a liability. True Star's mold remediation team finds the source, removes the mold properly, treats the affected materials, and provides clearance documentation. We work fast, document everything, and address the moisture source so it doesn't come back.",
-    heroImage: "/images/services/mold-remediation/hero.jpg",
+    heroImage: "/images/Jobs/img-5052.jpg",
     galleryImages: [
       "/images/services/mold-remediation/gallery-1.jpg",
       "/images/services/mold-remediation/gallery-2.jpg",
@@ -331,7 +331,7 @@ export const subServices: SubService[] = [
       "Full removal of attached or detached garages, including slab removal when needed.",
     longDescription:
       "Complete garage demolition for residential properties across North Jersey. We handle attached and detached structures, including the foundation slab, with full debris removal and site cleanup. Permits handled when required.",
-    heroImage: "/images/services/demolition/hero.jpg",
+    heroImage: "/images/Jobs/garage-demolition.jpg",
     whyHireAPro:
       "Garage demolition involves more than knocking down walls. Attached garages share structural connections with the main house — cutting them wrong can compromise the home's framing. Detached garages often have buried utilities and concrete slabs that require proper saw-cutting and disposal. In most NJ municipalities, a demolition permit is legally required, and unpermitted work can create title and insurance problems when you sell. We pull the permit, handle the disconnects, and leave the site ready for whatever comes next.",
     processSteps: [
@@ -409,7 +409,7 @@ export const subServices: SubService[] = [
       "Full or partial kitchen tear-out including cabinets, countertops, flooring, and fixtures, prepped for renovation.",
     longDescription:
       "Professional kitchen demolition for renovation projects. We remove cabinets, countertops, appliances, flooring, tile, and fixtures down to the studs and subfloor as needed, leaving the space ready for your contractor to begin the rebuild. Disposal included.",
-    heroImage: "/images/services/demolition/hero.jpg",
+    heroImage: "/images/Jobs/demolition-machine.jpg",
     whyHireAPro:
       "Kitchen demo looks straightforward until you hit the unexpected — asbestos floor tile in a pre-1980 home, a gas line that wasn't capped, plumbing connections that weren't flagged on the renovation plan. We pre-screen for hazardous materials, coordinate with your plumber and electrician on timing, and work around your renovation schedule. Debris out the same day where possible. Your GC starts with a clean, code-compliant space.",
     processSteps: [
@@ -487,7 +487,7 @@ export const subServices: SubService[] = [
       "Complete bathroom gut-out including tile, fixtures, vanity, tub, and flooring, ready for renovation.",
     longDescription:
       "Full bathroom demolition for residential renovations. We remove tile, vanities, tubs, toilets, flooring, and fixtures down to the studs and subfloor when needed. Plumbing capped safely. Disposal handled. Most bathrooms completed in one day.",
-    heroImage: "/images/services/demolition/hero.jpg",
+    heroImage: "/images/Jobs/deck-demolition.jpg",
     whyHireAPro:
       "Bathrooms concentrate the hazards: mortar beds under old tile can hide asbestos, subfloor moisture damage needs to be caught and documented before a renovation starts, and cast iron tubs require the right equipment to remove without cracking the floor below. We inspect before we start, flag anything that would surprise your contractor, and coordinate plumbing capping with your trade. You get a clean, inspected space — not a surprise on demo day.",
     processSteps: [
@@ -564,7 +564,7 @@ export const subServices: SubService[] = [
       "Complete demolition of single-family homes including foundation removal, hauling, and final site grading.",
     longDescription:
       "Full residential teardowns for new construction or land redevelopment across North Jersey. We handle the entire process — permits, utility disconnects, demolition, foundation removal, debris hauling, and final site grading. 25+ years experience, fully insured, licensed in NJ and NY.",
-    heroImage: "/images/services/demolition/hero.jpg",
+    heroImage: "/images/Jobs/demolition-machine.jpg",
     whyHireAPro:
       "A full house teardown is the most permit-intensive and regulated demolition job a homeowner can order. NJ law requires pre-demolition asbestos and lead testing for homes built before 1980. DOL notifications, municipal demolition permits, and utility company sign-offs must all line up before the first machine touches the structure. Get one step out of order and the work stops — sometimes for weeks. We've run this process hundreds of times. We know the sequence, the inspectors, and the disposal requirements. You get a graded, permit-closed site on schedule.",
     processSteps: [
@@ -644,7 +644,7 @@ export const subServices: SubService[] = [
       "Precision concrete cutting, slab removal, and selective concrete demolition for residential and light commercial.",
     longDescription:
       "Concrete cutting and demolition services across North Jersey. We handle slab removal, sidewalk and patio demolition, foundation cuts, and selective concrete work for residential and light commercial projects. Diamond blade cutting for clean precision — controlled removal and full disposal.",
-    heroImage: "/images/services/demolition/hero.jpg",
+    heroImage: "/images/Jobs/concrete-patio-demolition.jpg",
     whyHireAPro:
       "Concrete cutting looks like brute-force work — it isn't. Post-tension cables, rebar patterns, and embedded conduit aren't visible from the surface, and hitting them wrong can cause structural failure or electrical hazards. Diamond saw work also produces fine silica dust that requires proper respiratory protection and containment. We mark utilities, scan for cables before cutting, and contain the slurry. You get a clean cut where you need it, nothing damaged where you don't.",
     processSteps: [
@@ -721,7 +721,7 @@ export const subServices: SubService[] = [
       "Full removal and disposal of mobile homes, manufactured homes, and mobile office trailers across North Jersey.",
     longDescription:
       "Licensed demolition and removal of mobile homes, manufactured homes, and mobile office units for residential and commercial properties. We handle disconnects, permits, full teardown, and debris hauling — leaving the site clean and ready for whatever comes next.",
-    heroImage: "/images/services/demolition/mobile-home-demolition-hero.jpg",
+    heroImage: "/images/Jobs/mobile-office-demolition.jpg",
     whyHireAPro:
       "Mobile homes and manufactured units have construction characteristics that differ significantly from site-built structures — steel chassis, pier foundations, LP/gas lines, and electrical service panels that must be properly disconnected before any work begins. Mobile office trailers on commercial sites often require coordination with the property owner, site utilities, and in some cases local permits depending on municipality. Improper demolition can leave buried utilities, unstable piers, or environmental hazards that create liability for the property owner. True Star handles the full sequence: utility disconnects, permit coordination, teardown, and licensed disposal of all materials — so you're left with a clean, safe, permit-closed site.",
     processSteps: [
