@@ -162,6 +162,7 @@ export function ChatBubbleWidget() {
   const [panelOpen, setPanelOpen] = useState(false);
   const [panelEverOpened, setPanelEverOpened] = useState(false);
   const [pulse, setPulse] = useState(false);
+  const [showGreeting, setShowGreeting] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const excluded = pathname === "/estimate" || pathname.startsWith("/admin");
@@ -172,8 +173,9 @@ export function ChatBubbleWidget() {
     setSessionState(state);
     setMounted(true);
     if (state === "fresh") {
-      const t = setTimeout(() => setPulse(true), 1200);
-      return () => clearTimeout(t);
+      const t1 = setTimeout(() => setPulse(true), 1200);
+      const t2 = setTimeout(() => setShowGreeting(true), 3000);
+      return () => { clearTimeout(t1); clearTimeout(t2); };
     }
   }, []);
 
@@ -203,7 +205,7 @@ export function ChatBubbleWidget() {
     return () => document.removeEventListener("keydown", handler);
   }, [panelOpen]);
 
-  const openPanel = () => { setPanelOpen(true); setPanelEverOpened(true); setPulse(false); };
+  const openPanel = () => { setPanelOpen(true); setPanelEverOpened(true); setPulse(false); setShowGreeting(false); };
   const closePanel = () => {
     setPanelOpen(false);
     if (sessionState === "fresh") {
@@ -221,6 +223,33 @@ export function ChatBubbleWidget() {
       ref={containerRef}
       className="fixed z-[55] bottom-6 right-6 max-sm:bottom-24 max-sm:right-4 flex flex-col items-end gap-3"
     >
+      {/* Greeting tooltip */}
+      {showGreeting && !panelOpen && (
+        <div className="flex items-start gap-2 bg-white rounded-xl shadow-xl border border-[var(--line)] px-4 py-3 max-w-[260px] animate-fade-in">
+          <div className="w-8 h-8 rounded-full bg-[var(--brand-red)] flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-white font-black text-[10px]">TC</span>
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm text-[var(--ink)] leading-snug">
+              Hi there! Have a question?{" "}
+              <button
+                onClick={openPanel}
+                className="text-[var(--brand-red)] font-semibold hover:underline"
+              >
+                Chat with us here.
+              </button>
+            </p>
+          </div>
+          <button
+            onClick={() => setShowGreeting(false)}
+            className="text-[var(--muted)] hover:text-[var(--ink)] transition-colors flex-shrink-0 -mt-0.5"
+            aria-label="Dismiss"
+          >
+            <X size={14} />
+          </button>
+        </div>
+      )}
+
       {/* Panel */}
       {panelEverOpened && (
         <div

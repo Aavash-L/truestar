@@ -7,6 +7,7 @@ import { Phone, CheckCircle } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import { services } from "@/data/services";
 import { towns } from "@/data/towns";
+import { AddressAutocomplete } from "@/components/AddressAutocomplete";
 
 const schema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -22,6 +23,7 @@ type FormValues = z.infer<typeof schema>;
 export function EstimateForm() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [address, setAddress] = useState("");
 
   const {
     register,
@@ -35,7 +37,7 @@ export function EstimateForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, address }),
       });
       if (!res.ok) throw new Error("Failed to submit");
       setSubmitted(true);
@@ -82,6 +84,11 @@ export function EstimateForm() {
         <label htmlFor="email" className={labelClass}>Email Address *</label>
         <input id="email" type="email" autoComplete="email" className={inputClass} {...register("email")} />
         {errors.email && <p className={errorClass}>{errors.email.message}</p>}
+      </div>
+
+      <div>
+        <label className={labelClass}>Property Address (optional)</label>
+        <AddressAutocomplete value={address} onChange={setAddress} className={inputClass} />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

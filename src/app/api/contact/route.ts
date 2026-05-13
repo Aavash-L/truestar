@@ -8,6 +8,7 @@ const schema = z.object({
   email: z.string().email(),
   service: z.string().min(1),
   town: z.string().min(1),
+  address: z.string().optional(),
   message: z.string().optional(),
 });
 
@@ -75,6 +76,7 @@ export async function POST(req: NextRequest) {
       <tr><th>Email</th><td>${body.email}</td></tr>
       <tr><th>Service</th><td>${service}</td></tr>
       <tr><th>Town</th><td>${body.town}</td></tr>
+      <tr><th>Address</th><td>${body.address ?? "—"}</td></tr>
       <tr><th>Message</th><td>${body.message ?? "—"}</td></tr>
       <tr><th>Submitted</th><td>${timestamp} ET</td></tr>
     </table>
@@ -88,6 +90,7 @@ export async function POST(req: NextRequest) {
     `Email: ${body.email}`,
     `Service: ${service}`,
     `Town: ${body.town}`,
+    `Address: ${body.address ?? "—"}`,
     `Message: ${body.message ?? "—"}`,
     `Submitted: ${timestamp} ET`,
   ].join("\n");
