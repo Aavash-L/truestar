@@ -25,6 +25,7 @@ export function EstimateForm() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [address, setAddress] = useState("");
+  const [addressError, setAddressError] = useState<string | null>(null);
   const [emailSuggestion, setEmailSuggestion] = useState<string | null>(null);
 
   const {
@@ -60,6 +61,11 @@ export function EstimateForm() {
 
   const onSubmit = async (data: FormValues) => {
     setError(null);
+    if (!address.trim()) {
+      setAddressError("Property address is required");
+      return;
+    }
+    setAddressError(null);
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -141,8 +147,14 @@ export function EstimateForm() {
       </div>
 
       <div>
-        <label className={labelClass}>Property Address (optional)</label>
-        <AddressAutocomplete value={address} onChange={setAddress} onTownDetected={handleTownDetected} className={inputClass} />
+        <label className={labelClass}>Property Address *</label>
+        <AddressAutocomplete
+          value={address}
+          onChange={(v) => { setAddress(v); if (v.trim()) setAddressError(null); }}
+          onTownDetected={handleTownDetected}
+          className={inputClass}
+        />
+        {addressError && <p className={errorClass}>{addressError}</p>}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
