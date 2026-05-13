@@ -28,8 +28,17 @@ export function EstimateForm() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({ resolver: zodResolver(schema) });
+
+  const handleTownDetected = (city: string) => {
+    const normalized = city.toLowerCase().trim();
+    const match = towns.find(
+      (t) => t.name.toLowerCase() === normalized || t.slug === normalized.replace(/\s+/g, "-")
+    );
+    if (match) setValue("town", match.slug, { shouldValidate: true });
+  };
 
   const onSubmit = async (data: FormValues) => {
     setError(null);
@@ -88,7 +97,7 @@ export function EstimateForm() {
 
       <div>
         <label className={labelClass}>Property Address (optional)</label>
-        <AddressAutocomplete value={address} onChange={setAddress} className={inputClass} />
+        <AddressAutocomplete value={address} onChange={setAddress} onTownDetected={handleTownDetected} className={inputClass} />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

@@ -28,10 +28,11 @@ function formatAddress(r: NominatimResult): string {
 interface Props {
   value: string;
   onChange: (value: string) => void;
+  onTownDetected?: (city: string) => void;
   className?: string;
 }
 
-export function AddressAutocomplete({ value, onChange, className }: Props) {
+export function AddressAutocomplete({ value, onChange, onTownDetected, className }: Props) {
   const [suggestions, setSuggestions] = useState<NominatimResult[]>([]);
   const [open, setOpen] = useState(false);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -60,6 +61,8 @@ export function AddressAutocomplete({ value, onChange, className }: Props) {
 
   const select = (r: NominatimResult) => {
     onChange(formatAddress(r));
+    const city = r.address.city || r.address.town || r.address.village || r.address.suburb || "";
+    if (city && onTownDetected) onTownDetected(city);
     setSuggestions([]);
     setOpen(false);
   };
