@@ -8,11 +8,12 @@ import { siteConfig } from "@/data/siteConfig";
 import { services } from "@/data/services";
 import { towns } from "@/data/towns";
 import { AddressAutocomplete } from "@/components/AddressAutocomplete";
+import { formatPhone, suggestEmail } from "@/lib/phoneFormat";
 
 const schema = z.object({
   name: z.string().min(2, "Name is required"),
-  phone: z.string().min(10, "Valid phone number required"),
-  email: z.string().email("Valid email required"),
+  phone: z.string().min(14, "Enter a complete 10-digit phone number"),
+  email: z.string().email("Enter a valid email address"),
   service: z.string().min(1, "Please select a service"),
   town: z.string().min(1, "Please select your town"),
   message: z.string().optional(),
@@ -24,11 +25,13 @@ export function EstimateForm() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [address, setAddress] = useState("");
+  const [emailSuggestion, setEmailSuggestion] = useState<string | null>(null);
 
   const {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({ resolver: zodResolver(schema) });
 
@@ -38,6 +41,21 @@ export function EstimateForm() {
       (t) => t.name.toLowerCase() === normalized || t.slug === normalized.replace(/\s+/g, "-")
     );
     if (match) setValue("town", match.slug, { shouldValidate: true });
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhone(e.target.value);
+    setValue("phone", formatted, { shouldValidate: false });
+  };
+
+  const handleEmailBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    setEmailSuggestion(suggestEmail(e.target.value));
+  };
+
+  const applyEmailSuggestion = () => {
+    if (!emailSuggestion) return;
+    setValue("email", emailSuggestion, { shouldValidate: true });
+    setEmailSuggestion(null);
   };
 
   const onSubmit = async (data: FormValues) => {
@@ -84,15 +102,42 @@ export function EstimateForm() {
         </div>
         <div>
           <label htmlFor="phone" className={labelClass}>Phone Number *</label>
-          <input id="phone" type="tel" autoComplete="tel" className={inputClass} {...register("phone")} />
+          <input
+            id="phone"
+            type="tel"
+            autoComplete="tel"
+            placeholder="(201) 555-0100"
+            className={inputClass}
+            {...register("phone")}
+            onChange={handlePhoneChange}
+            value={watch("phone") ?? ""}
+          />
           {errors.phone && <p className={errorClass}>{errors.phone.message}</p>}
         </div>
       </div>
 
       <div>
         <label htmlFor="email" className={labelClass}>Email Address *</label>
-        <input id="email" type="email" autoComplete="email" className={inputClass} {...register("email")} />
-        {errors.email && <p className={errorClass}>{errors.email.message}</p>}
+        <input
+          id="email"
+          type="email"
+          autoComplete="email"
+          placeholder="you@example.com"
+          className={inputClass}
+          {...register("email")}
+          onBlur={handleEmailBlur}
+          onChange={(e) => { register("email").onChange(e); setEmailSuggestion(null); }}
+        />
+        {emailSuggestion && (
+          <p className="text-xs mt-1 text-[var(--muted)]">
+            Did you mean{" "}
+            <button type="button" onClick={applyEmailSuggestion} className="text-[var(--brand-red)] font-semibold underline">
+              {emailSuggestion}
+            </button>
+            ?
+          </p>
+        )}
+        {errors.email && !emailSuggestion && <p className={errorClass}>{errors.email.message}</p>}
       </div>
 
       <div>

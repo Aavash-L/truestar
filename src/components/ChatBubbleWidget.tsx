@@ -4,26 +4,18 @@ import { usePathname } from "next/navigation";
 import { MessageCircle, X, ArrowRight } from "lucide-react";
 import { z } from "zod";
 import { siteConfig } from "@/data/siteConfig";
+import { formatPhone } from "@/lib/phoneFormat";
 
 const STORAGE_KEY = "chatBubbleState";
 
 const schema = z.object({
   name: z.string().min(2, "Name is required"),
-  phone: z
-    .string()
-    .regex(/^\(\d{3}\) \d{3}-\d{4}$/, "Enter a valid US phone number"),
+  phone: z.string().min(14, "Enter a complete 10-digit phone number"),
   message: z.string().min(1, "Please describe what you need help with"),
 });
 
 type FieldErrors = Partial<Record<keyof z.infer<typeof schema>, string>>;
 
-function formatPhone(raw: string): string {
-  const digits = raw.replace(/\D/g, "").slice(0, 10);
-  if (digits.length === 10) {
-    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
-  }
-  return raw;
-}
 
 function ChatPanel({ onClose, onSuccess }: { onClose: () => void; onSuccess: () => void }) {
   const [name, setName] = useState("");
@@ -35,7 +27,7 @@ function ChatPanel({ onClose, onSuccess }: { onClose: () => void; onSuccess: () 
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const handlePhoneBlur = () => setPhone(formatPhone(phone));
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => setPhone(formatPhone(e.target.value));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -114,7 +106,7 @@ function ChatPanel({ onClose, onSuccess }: { onClose: () => void; onSuccess: () 
             <div>
               <div className="flex">
                 <span className="flex items-center px-3 border border-r-0 border-[var(--line)] bg-[var(--paper-2)] text-sm text-[var(--muted)] select-none flex-shrink-0">+1</span>
-                <input type="tel" placeholder="Phone *" value={phone} onChange={(e) => setPhone(e.target.value)} onBlur={handlePhoneBlur} autoComplete="tel" className={inputClass} />
+                <input type="tel" placeholder="(201) 555-0100" value={phone} onChange={handlePhoneChange} autoComplete="tel" className={inputClass} />
               </div>
               {fieldErrors.phone && <p className="text-[var(--brand-red)] text-xs mt-1">{fieldErrors.phone}</p>}
             </div>
