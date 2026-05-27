@@ -39,7 +39,7 @@ export const siteConfig = {
     googleReviewCount: 42,
   },
   licenses: {
-    njLicense: "02047",
+    njLicense: "13VH1126880",
     nyLicense: "523528",
     njDep: "02047",
   },

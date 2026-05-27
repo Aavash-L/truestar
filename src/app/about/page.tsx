@@ -39,10 +39,6 @@ export default function AboutPage() {
                 <p>
                   We&apos;re based in North Arlington, and most of our work is in Bergen, Hudson, and Essex counties. We know the local permit offices, the inspectors, and the building stock. That familiarity saves our clients time and money on every job.
                 </p>
-                <p>
-                  {/* TODO: add owner bio/story if provided by client */}
-                  {"{{TODO: owner name and personal story — client to provide}}"}
-                </p>
               </div>
 
               <div className="mt-8">
