@@ -9,6 +9,7 @@ import { services } from "@/data/services";
 import { towns } from "@/data/towns";
 import { AddressAutocomplete } from "@/components/AddressAutocomplete";
 import { formatPhone, suggestEmail } from "@/lib/phoneFormat";
+import { trackEvent } from "@/lib/gtag";
 
 const schema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -73,6 +74,7 @@ export function EstimateForm() {
         body: JSON.stringify({ ...data, address }),
       });
       if (!res.ok) throw new Error("Failed to submit");
+      trackEvent("generate_lead");
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please call us directly at " + siteConfig.phone.display);
