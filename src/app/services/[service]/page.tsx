@@ -24,9 +24,20 @@ export async function generateMetadata({
   const service = services.find((s) => s.slug === serviceSlug);
   if (!service) return {};
 
+  const metaDescriptions: Partial<Record<string, string>> = {
+    "demolition":
+      "Looking for demolition contractors near me in North Jersey? True Star handles interior and selective demolition for residential and commercial projects. Permits included. 60 towns served. Call (201) 790-4530.",
+    "asbestos-removal":
+      "Searching for asbestos removal near me in Bergen County or across North Jersey? True Star is NJ DOL licensed for testing, abatement, air clearance & disposal. Free estimate. Call (201) 790-4530.",
+    "mold-remediation":
+      "Need mold remediation near me in North Jersey? True Star finds the source, removes mold properly, and provides written clearance documentation. 60 towns served. Call (201) 790-4530.",
+  };
+
   return {
     title: `${service.name} in New Jersey | True Star Contracting LLC`,
-    description: `${service.shortDescription} Serving 60 towns in North Jersey. Call (201) 790-4530 for a free estimate. Licensed & insured.`,
+    description:
+      metaDescriptions[service.slug] ??
+      `${service.shortDescription} Serving 60 towns in North Jersey. Call (201) 790-4530 for a free estimate. Licensed & insured.`,
     alternates: { canonical: `/services/${service.slug}` },
   };
 }

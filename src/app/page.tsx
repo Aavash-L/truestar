@@ -14,7 +14,7 @@ import { buildFaqSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "True Star Contracting LLC | Demolition & Asbestos Removal North Jersey",
   description:
-    "Licensed demolition, asbestos removal & mold remediation serving 60 towns in North Jersey. 25+ years, 5.0 Google rating. Call (201) 790-4530 for a free estimate.",
+    "Licensed demolition, asbestos removal & mold remediation near me in North Jersey. True Star serves 60 towns across Bergen, Hudson & Essex counties. 25+ years, 5.0 Google rating. Call (201) 790-4530.",
   alternates: { canonical: "/" },
 };
 
@@ -218,7 +218,7 @@ export default function HomePage() {
               { num: "01", heading: "25+ Years On The Job", body: "We've been working in North Jersey since before most contractors knew what NJ DOL regulations were. That experience shows on every job." },
               { num: "02", heading: "Permits Handled", body: "We pull demolition permits and file NJ DOL asbestos notifications on every applicable job. You don't need to know the process." },
               { num: "03", heading: "24-Hour Estimate Response", body: "We visit the property, assess the scope, and give you a written estimate within 24 hours of your call. No runaround, no price guessing." },
-              { num: "04", heading: "Family Owned, Locally Run", body: "We're based in North Arlington and we work across the region. We know the towns, the permit offices, and the building stock." },
+              { num: "04", heading: "Family Owned, Locally Run", body: "We're based in North Arlington and we work across the region. When neighbors search for demolition contractors near me or asbestos removal near me in Bergen or Hudson County, they find us — because we know the towns, the permit offices, and the building stock." },
             ].map(({ num, heading, body }) => (
               <div key={num} className="flex gap-6">
                 <div className="text-[var(--brand-red)] font-black font-display text-4xl leading-none flex-shrink-0 w-12">
@@ -317,7 +317,7 @@ export default function HomePage() {
               Serving 60 Towns Across North Jersey
             </h2>
             <p className="text-[var(--muted)] text-lg max-w-2xl">
-              We cover Bergen, Hudson, Essex, Passaic, and Middlesex counties. Free estimates throughout our service area.
+              We cover Bergen, Hudson, Essex, Passaic, and Middlesex counties — so if you&apos;re looking for a licensed contractor near me anywhere in North Jersey, there&apos;s a good chance we serve your town. Free estimates throughout our service area.
             </p>
           </div>
 

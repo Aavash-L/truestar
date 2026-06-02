@@ -31,7 +31,7 @@ export const services: Service[] = [
     shortDescription:
       "Interior and selective demolition for residential and commercial projects. Full site prep, debris removal, and permits handled.",
     longDescription:
-      "True Star Contracting has been handling demolition work across North Jersey for over 25 years. Whether you need a single room stripped to the studs or a full commercial gut job, we plan it right, pull the permits, and leave the site clean. No shortcuts. We work around your schedule and coordinate with general contractors, architects, and property managers.",
+      "True Star Contracting has been handling demolition work across North Jersey for over 25 years. Whether you need a single room stripped to the studs or a full commercial gut job, we plan it right, pull the permits, and leave the site clean. If you're searching for demolition contractors near me in Bergen, Hudson, or Essex County, we're the locally based crew that knows the towns, the permit offices, and the job. No shortcuts. We work around your schedule and coordinate with general contractors, architects, and property managers.",
     heroImage: "/images/Jobs/garage-demolition.jpg",
     galleryImages: [
       "/images/services/demolition/gallery-1.jpg",
@@ -118,7 +118,7 @@ export const services: Service[] = [
     shortDescription:
       "Licensed NJ asbestos abatement for homes and commercial buildings. Testing, removal, air clearance, and disposal — fully certified.",
     longDescription:
-      "Asbestos in your building is a legal and health liability. True Star is licensed by the NJ DOL to handle asbestos removal on any residential or commercial property in New Jersey. We test, remove, air-clear, and dispose of all asbestos-containing materials — and we do it without stopping your project in its tracks.",
+      "Asbestos in your building is a legal and health liability. True Star is licensed by the NJ DOL to handle asbestos removal on any residential or commercial property in New Jersey. Whether you're searching for asbestos removal near me in Bergen County or dealing with a pre-1980 building anywhere in the region, we test, remove, air-clear, and dispose of all asbestos-containing materials — and we do it without stopping your project in its tracks.",
     heroImage: "/images/Jobs/asbestos-removal.jpg",
     galleryImages: [
       "/images/services/asbestos-removal/gallery-1.jpg",
@@ -212,7 +212,7 @@ export const services: Service[] = [
     shortDescription:
       "Professional mold testing, removal, and remediation for residential and commercial properties across North Jersey.",
     longDescription:
-      "Mold in a building is not just an aesthetic problem — it's a health hazard and a liability. True Star's mold remediation team finds the source, removes the mold properly, treats the affected materials, and provides clearance documentation. We work fast, document everything, and address the moisture source so it doesn't come back.",
+      "Mold in a building is not just an aesthetic problem — it's a health hazard and a liability. If you're searching for mold remediation near me in North Jersey, True Star's team finds the source, removes the mold properly, treats the affected materials, and provides clearance documentation. We work fast, document everything, and address the moisture source so it doesn't come back.",
     heroImage: "/images/Jobs/img-5052.jpg",
     galleryImages: [
       "/images/services/mold-remediation/gallery-1.jpg",
