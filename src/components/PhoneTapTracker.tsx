@@ -6,7 +6,7 @@ export function PhoneTapTracker() {
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       const anchor = (e.target as HTMLElement).closest("a");
-      if (anchor?.href?.startsWith("tel:")) {
+      if (anchor?.getAttribute("href")?.startsWith("tel:")) {
         trackEvent("phone_tap");
       }
     };
