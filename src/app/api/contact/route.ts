@@ -10,7 +10,32 @@ const schema = z.object({
   town: z.string().min(1),
   address: z.string().optional(),
   message: z.string().optional(),
+  recaptchaToken: z.string().optional(),
 });
+
+const RECAPTCHA_SCORE_THRESHOLD = 0.5;
+
+async function verifyRecaptcha(token: string | undefined, ip: string): Promise<boolean> {
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+  if (!secretKey) {
+    // Not configured — skip verification (e.g. local dev without keys)
+    return true;
+  }
+  if (!token) return false;
+
+  try {
+    const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ secret: secretKey, response: token, remoteip: ip }),
+    });
+    const result = await res.json();
+    return result.success === true && typeof result.score === "number" && result.score >= RECAPTCHA_SCORE_THRESHOLD;
+  } catch (err) {
+    console.error("[reCAPTCHA verify error]", err);
+    return false;
+  }
+}
 
 // In-memory rate limiter (resets on cold start — good enough for this use case)
 const rateMap = new Map<string, { count: number; resetAt: number }>();
@@ -50,6 +75,11 @@ export async function POST(req: NextRequest) {
     body = schema.parse(await req.json());
   } catch {
     return NextResponse.json({ error: "Invalid form data" }, { status: 400 });
+  }
+
+  const recaptchaPassed = await verifyRecaptcha(body.recaptchaToken, ip);
+  if (!recaptchaPassed) {
+    return NextResponse.json({ error: "Failed verification" }, { status: 400 });
   }
 
   const apiKey = process.env.RESEND_API_KEY;

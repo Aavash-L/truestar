@@ -68,10 +68,19 @@ export function EstimateForm() {
     }
     setAddressError(null);
     try {
+      const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+      const recaptchaToken = siteKey
+        ? await new Promise<string>((resolve, reject) => {
+            window.grecaptcha.ready(() => {
+              window.grecaptcha.execute(siteKey, { action: "submit" }).then(resolve, reject);
+            });
+          })
+        : undefined;
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, address }),
+        body: JSON.stringify({ ...data, address, recaptchaToken }),
       });
       if (!res.ok) throw new Error("Failed to submit");
       trackEvent("generate_lead");

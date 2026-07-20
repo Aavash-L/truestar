@@ -11,6 +11,7 @@ import { ChatBubbleWidget } from "@/components/ChatBubbleWidget";
 import { PhoneTapTracker } from "@/components/PhoneTapTracker";
 
 const tagId = process.env.NEXT_PUBLIC_GOOGLE_TAG_ID;
+const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const inter = Inter({
   subsets: ["latin"],
@@ -70,6 +71,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               `}
             </Script>
           </>
+        )}
+        {recaptchaSiteKey && (
+          <Script
+            src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
+            strategy="afterInteractive"
+          />
         )}
         <a href="#main-content" className="skip-to-content">
           Skip to main content
