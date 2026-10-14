@@ -7,7 +7,7 @@ import { CopyEmail } from "@/components/CopyEmail";
 export const metadata: Metadata = {
   title: "Contact Us | True Star Contracting LLC",
   description:
-    "Contact True Star Contracting LLC for demolition, asbestos removal, or mold remediation in North Jersey. Call (201) 790-4530 or use our contact form.",
+    "Contact True Star Contracting LLC for demolition, asbestos removal, or mold remediation in North Jersey. Call (908) 402-0192 or use our contact form.",
   alternates: { canonical: "/contact" },
 };
 

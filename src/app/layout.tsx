@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     template: "%s | True Star Contracting LLC",
   },
   description:
-    "Licensed demolition, asbestos removal & mold remediation in North Jersey. 25+ years, 60 towns served. Call (201) 790-4530 for a free estimate. Fully insured.",
+    "Licensed demolition, asbestos removal & mold remediation in North Jersey. 25+ years, 60 towns served. Call (908) 402-0192 for a free estimate. Fully insured.",
   openGraph: {
     type: "website",
     locale: "en_US",

@@ -2,9 +2,9 @@ export const siteConfig = {
   name: "True Star Contracting LLC",
   tagline: "Licensed Demolition & Asbestos Removal Done Right.",
   phone: {
-    display: "(201) 790-4530",
-    href: "tel:+12017904530",
-    raw: "+12017904530",
+    display: "(908) 402-0192",
+    href: "tel:+19084020192",
+    raw: "+19084020192",
   },
   email: "info@truestarcontracting.com",
   address: {

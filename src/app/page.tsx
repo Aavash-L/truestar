@@ -14,7 +14,7 @@ import { buildFaqSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "True Star Contracting LLC | Demolition & Asbestos Removal North Jersey",
   description:
-    "Licensed demolition, asbestos removal & mold remediation near me in North Jersey. True Star serves 60 towns across Bergen, Hudson & Essex counties. 25+ years, 5.0 Google rating. Call (201) 790-4530.",
+    "Licensed demolition, asbestos removal & mold remediation near me in North Jersey. True Star serves 60 towns across Bergen, Hudson & Essex counties. 25+ years, 5.0 Google rating. Call (908) 402-0192.",
   alternates: { canonical: "/" },
 };
 

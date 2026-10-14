@@ -42,7 +42,7 @@ export async function generateMetadata({
 
   return {
     title: `${service.name} in ${town.name}, NJ | True Star Contracting`,
-    description: `Licensed ${service.name.toLowerCase()} in ${town.name}, NJ (${town.zipCodes.join(", ")}). 25+ years experience, NJ DOL certified. Call (201) 790-4530 for a free estimate.`,
+    description: `Licensed ${service.name.toLowerCase()} in ${town.name}, NJ (${town.zipCodes.join(", ")}). 25+ years experience, NJ DOL certified. Call (908) 402-0192 for a free estimate.`,
     alternates: { canonical: `/service-areas/${town.slug}/${service.slug}` },
   };
 }

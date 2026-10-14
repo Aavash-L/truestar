@@ -7,7 +7,7 @@ export const globalFaqs: FAQ[] = [
   {
     question: "How much does asbestos removal cost?",
     answer:
-      "Cost depends on the material type, square footage, and accessibility. A single-room floor tile job typically runs $1,500–$4,000. Whole-house pipe insulation abatement is more. We visit every site before quoting — call us for a free estimate at (201) 790-4530.",
+      "Cost depends on the material type, square footage, and accessibility. A single-room floor tile job typically runs $1,500–$4,000. Whole-house pipe insulation abatement is more. We visit every site before quoting — call us for a free estimate at (908) 402-0192.",
   },
   {
     question: "Are you licensed and insured?",
@@ -32,7 +32,7 @@ export const globalFaqs: FAQ[] = [
   {
     question: "Do you offer free estimates?",
     answer:
-      "Yes. We provide free on-site estimates for all services. We visit the property, assess the scope, and deliver a written estimate within 24 hours. Call (201) 790-4530 or use the form on our site.",
+      "Yes. We provide free on-site estimates for all services. We visit the property, assess the scope, and deliver a written estimate within 24 hours. Call (908) 402-0192 or use the form on our site.",
   },
   {
     question: "What towns do you serve?",

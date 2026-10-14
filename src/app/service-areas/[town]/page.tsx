@@ -27,7 +27,7 @@ export async function generateMetadata({
 
   return {
     title: `Demolition, Asbestos Removal & Mold Remediation in ${town.name}, NJ`,
-    description: `Licensed demolition, asbestos removal & mold remediation in ${town.name}, NJ (${town.zipCodes.join(", ")}). 25+ years, free estimates. Call (201) 790-4530.`,
+    description: `Licensed demolition, asbestos removal & mold remediation in ${town.name}, NJ (${town.zipCodes.join(", ")}). 25+ years, free estimates. Call (908) 402-0192.`,
     alternates: { canonical: `/service-areas/${town.slug}` },
   };
 }

@@ -6,7 +6,7 @@ import { EstimateForm } from "@/components/forms/EstimateForm";
 export const metadata: Metadata = {
   title: "Schedule a Free On-Site Estimate | True Star Contracting LLC",
   description:
-    "Schedule a free on-site estimate for demolition, asbestos removal, or mold remediation in North Jersey. We come to you. Call (201) 790-4530.",
+    "Schedule a free on-site estimate for demolition, asbestos removal, or mold remediation in North Jersey. We come to you. Call (908) 402-0192.",
   alternates: { canonical: "/estimate" },
 };
 
